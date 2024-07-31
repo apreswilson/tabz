@@ -4,7 +4,7 @@ interface MongooseDefaults {
    conn: Mongoose | null;
    promise: Promise<Mongoose> | null;
 }
-
+console.log("test")
 let mongooseDefaults: MongooseDefaults = {
    conn: null,
    promise: null
