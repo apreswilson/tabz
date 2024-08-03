@@ -1,7 +1,9 @@
 import "./shouts.module.scss";
 
-export default function Shouts () {
+export default function Shouts() {
    return (
-      <p>This is the shouts page</p>
+      <main>
+         <p>This is the shouts page</p>
+      </main>
    )
 }
