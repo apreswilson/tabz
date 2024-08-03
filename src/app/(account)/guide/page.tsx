@@ -1,7 +1,9 @@
 import "./guide.module.scss";
 
-export default function Guide () {
+export default function Guide() {
    return (
-      <p>This is the guide page</p>
+      <main>
+         <p>This is the guide page</p>
+      </main>
    )
 }
