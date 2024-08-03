@@ -18,6 +18,8 @@ export default function Login() {
    //    fetchUsers();
    // }, [])
 
+   console.log("hi");
+
    return (
       <main>
          <p>This is the login page</p>
