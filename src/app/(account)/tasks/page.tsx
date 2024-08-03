@@ -1,7 +1,9 @@
 import "./tasks.module.scss";
 
-export default function Tasks () {
+export default function Tasks() {
    return (
-      <p>This is the tasks page</p>
+      <main>
+         <p>This is the tasks page</p>
+      </main>
    )
 }

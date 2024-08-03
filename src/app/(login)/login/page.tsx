@@ -6,26 +6,26 @@ import { UserInterface } from "@/models/User";
 
 export default function Login() {
    const [users, setUsers] = useState<UserInterface[]>([]);
-   console.log(users);
-   useEffect(() => {
-      const fetchUsers = async () => {
-         const res = await fetch('/api/users');
-         const data = await res.json();
-         if (data.success) {
-            setUsers(data.data);
-         }
-      }
+   // useEffect(() => {
+   //    const fetchUsers = async () => {
+   //       const res = await fetch('/api/users');
+   //       const data = await res.json();
+   //       if (data.success) {
+   //          setUsers(data.data);
+   //       }
+   //    }
 
-      fetchUsers();
-   }, [])
+   //    fetchUsers();
+   // }, [])
 
    return (
-      <>
+      <main>
+         <p>This is the login page</p>
          <div className="test">
             {users.map((users) => (
                <li key={users._id}>{users.name}</li>
             ))}
          </div>
-      </>
+      </main>
    )
 }
