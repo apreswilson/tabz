@@ -4,7 +4,7 @@ name: Feature Branch Tests
 on:
   push:
     branches:
-      - 'feature'
+      - 'features'
 
 jobs:
   test:
