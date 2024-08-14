@@ -1,0 +1,304 @@
+@use "../../../app/globals.scss" as global;
+
+//Variables
+$open-bar-width-offset: calc(#{global.$open-side-navigation-width} - 1.25rem); //13.75
+$minimized-bar-width-offset: calc(#{global.$minimized-side-navigation-width} - 1.25rem); //13.75
+$minimize-menu-button: 1.5rem;
+$minimize-menu-button-distance-from-left: $open-bar-width-offset;
+$page-icon-size: 1.75rem;
+$page-link-font-size: 1rem;
+$menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
+
+.navigation_menu,
+.minimized_navigation_menu {
+   grid-row: 1 / span 2;
+   z-index: 10;
+   border-right: global.$default-border;
+}
+
+//Open menu
+
+.open_mobile_menu {
+   display: none;
+}
+
+.top_area {
+   padding: 1rem;
+   display: flex;
+   align-items: center;
+
+   h1 {
+      margin: 0;
+      width: 100%;
+      font-size: 2.5rem;
+      letter-spacing: 0.25rem;
+      color: global.$logo-color;
+      text-align: center;
+   }
+
+   svg {
+      left: $minimize-menu-button-distance-from-left;
+      @extend %transition; 
+      @extend %menu-svg;
+   }
+}
+
+.pages,
+.bottom_area {
+   @extend %page-list-svg;
+   @extend %page-link;
+}
+
+.pages {
+   margin: 1rem 0 1rem 0;
+}
+
+.bottom_area {
+   margin: 1rem 0 0 0;
+}
+
+.bar {
+   height: 0.01rem;
+   width: $open-bar-width-offset;
+   background-color: global.$border-color;
+   margin: auto;
+   @extend %transition; 
+}
+
+//Desktop but minimized navigation menu
+.minimized_navigation_menu {
+   .top_area>svg {
+      left: 3.75rem;
+   }
+
+   .pages>ul>li,
+   .bottom_area>ul>li {
+      width: global.$minimized-side-navigation-width;
+      justify-content: center;
+
+      svg {
+         margin-left: 0;
+         animation: moveIconLeft 0.4s;
+      }
+
+      span {
+         left: 5rem;
+         padding: 0.5rem;
+         color: global.$default-white;
+         box-shadow: $menu-svg-box-shadow;
+         border-radius: global.$default-border-radius;
+         background-color: global.$svg-background-black;
+         display: none;
+         position: absolute;
+         pointer-events: none;
+      }
+
+      span::after {
+         top: 50%;
+         right: 100%;
+         margin-top: -0.375rem;
+         border-width: 0.375rem;
+         border-color: transparent global.$svg-background-black transparent transparent;
+         content: "";
+         position: absolute;
+         border-style: solid;
+      }
+
+      &:hover {
+         span {
+            display: inline;
+         }
+      }
+   }
+
+   .bar {
+      width: $minimized-bar-width-offset;
+   }
+}
+
+@media screen and (max-width: 700px) {
+
+   .navigation_menu,
+   .minimized_navigation_menu {
+      grid-row: -1;
+   }
+
+   .navigation_menu {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background-color: global.$background-color;
+      animation: openMobileMenu global.$default-transition;
+      position: absolute;
+
+      .top_area>svg {
+         left: 3.75rem;
+      }
+
+      .pages>ul,
+      .bottom_area>ul {
+         li {
+            width: 50%;
+            font-size: 1.5rem;
+            justify-content: center;
+         }
+
+         p {
+            animation: none;
+         }
+
+         svg {
+            margin-left: 0;
+            animation: none;
+         }
+      }
+
+      .bar {
+         width: 85%;
+      }
+   }
+
+   .minimized_navigation_menu {
+      border: none;
+   }
+
+   .minimized_navigation_menu>section,
+   .minimized_navigation_menu>.bar {
+      display: none;
+      visibility: hidden;
+   }
+
+
+   .open_mobile_menu {
+      z-index: 10;
+      left: -1rem;
+      top: 1.75rem;
+      padding: 0.3rem 0 0.3rem 0.5rem;
+      color: global.$border-color;
+      height: $minimize-menu-button;
+      box-shadow: $menu-svg-box-shadow;
+      width: calc($minimize-menu-button + 1rem);
+      border-radius: global.$default-border-radius;
+      background-color: global.$svg-background-black;
+      display: block;
+      cursor: pointer;
+      position: absolute;
+      text-align: center;
+
+      svg {
+         width: $page-icon-size;
+         height: $page-icon-size;
+      }
+
+      &:hover {
+         color: global.$logo-color;
+      }
+   }
+}
+
+//Extensions
+%page-link {
+
+   ul {
+      gap: 1rem;
+      padding: 0;
+      display: flex;
+      list-style-type: none;
+      flex-direction: column;
+
+      span {
+         display: none;
+      }
+   }
+
+   li,
+   .bottom_area {
+      gap: 0.75rem;
+      padding: 1.25rem 0;
+      color: global.$border-color;
+      font-size: $page-link-font-size;
+      border-radius: global.$default-border-radius;
+      width: calc(#{global.$open-side-navigation-width} - 1rem);
+      margin: auto;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      @extend %transition; 
+
+      p {
+         margin: 0;
+         animation: translateParagraphExpand calc(#{global.$default-transition} + 0.1s);
+         position: relative;
+      }
+
+      &:hover {
+         color: global.$logo-color;
+         background-color: global.$hover-background-color;
+      }
+   }
+}
+
+%menu-svg {
+   padding: 0.5rem 0.75rem;
+   color: global.$border-color;
+   height: $minimize-menu-button;
+   border-radius: global.$default-border-radius;
+   background-color: global.$svg-background-black;
+   box-shadow: $menu-svg-box-shadow;
+   cursor: pointer;
+   position: absolute;
+
+   &:hover {
+      color: global.$logo-color;
+   }
+}
+
+%page-list-svg {
+   svg {
+      margin-left: 2.75rem;
+      width: $page-icon-size;
+      height: $page-icon-size;
+      animation: moveIconRight 0.4s;
+   }
+}
+
+//Keyframes Possible TODO: Cross Browser Animation Handling
+@keyframes moveIconRight {
+   from {
+      margin-left: 0rem;
+   }
+
+   to {
+      margin-left: 2.75rem;
+   }
+}
+
+@keyframes translateParagraphExpand {
+   from {
+      left: -5rem;
+   }
+
+   to {
+      left: 0rem;
+   }
+}
+
+@keyframes moveIconLeft {
+   from {
+      margin-left: 2.75rem;
+   }
+
+   to {
+      margin-left: 0rem;
+   }
+}
+
+@keyframes openMobileMenu {
+   from {
+      left: -20rem;
+   }
+
+   to {
+      left: 0rem;
+   }
+}

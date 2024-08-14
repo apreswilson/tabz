@@ -1,0 +1,85 @@
+@use "../../../app/globals.scss" as global;
+
+.edit_member {
+   padding: 2rem;
+   grid-template-columns: repeat(3, 1fr) 0.75fr;
+   color: global.$default-white;
+   box-shadow: global.$default-box-shadow;
+   background-color: global.$background-color;
+   display: grid;
+
+   div {
+      margin: auto;
+   }
+
+   .name,
+   .email,
+   .role {
+      font-size: 1.25rem;
+      display: flex;
+      flex-direction: column; 
+
+      input {
+         border: 0;
+         padding: 0.5rem;
+         font-size: 1rem;
+         margin-top: 0.75rem;
+         width: calc(100% - 1rem);
+         border: global.$default-border;
+         color: global.$default-white;
+         border-radius: global.$default-border-radius;
+         background-color: global.$darker-background-color;
+         outline: none;
+      }
+   }
+
+   .buttons {
+      gap: 0.5rem;
+      height: 100%;
+      display: flex;
+      align-items: last baseline;
+
+      button {
+         font-size: 1rem;
+         padding: 0.5rem 1rem;
+         color: global.$default-white;
+         border-radius: global.$default-border-radius;
+         border: none;
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      .cancel {
+         background-color: global.$logo-color;
+      }
+
+      .cancel:hover,
+      .update:hover {
+         opacity: 0.8
+      }
+
+      .update {
+         background-color: global.$default-green;
+      }
+   }
+}
+
+@media screen and (max-width: 1050px) {
+   .edit_member {
+      row-gap: 1rem;
+      column-gap: 1rem;
+      grid-template-columns: auto auto;
+   }
+
+}
+
+@media screen and (max-width: 500px) {
+   .edit_member {
+      row-gap: 2rem;
+      grid-template-columns: auto;
+
+      div {
+         width: 100%;
+      }
+   }
+}
