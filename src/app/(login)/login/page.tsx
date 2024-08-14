@@ -6,17 +6,17 @@ import { UserInterface } from "@/models/User";
 
 export default function Login() {
    const [users, setUsers] = useState<UserInterface[]>([]);
-   // useEffect(() => {
-   //    const fetchUsers = async () => {
-   //       const res = await fetch('/api/users');
-   //       const data = await res.json();
-   //       if (data.success) {
-   //          setUsers(data.data);
-   //       }
-   //    }
+   useEffect(() => {
+      const fetchUsers = async () => {
+         const res = await fetch('/api/users');
+         const data = await res.json();
+         if (data.success) {
+            setUsers(data.data);
+         }
+      }
 
-   //    fetchUsers();
-   // }, [])
+      fetchUsers();
+   }, [])
 
    return (
       <main>

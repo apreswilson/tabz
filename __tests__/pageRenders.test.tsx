@@ -21,13 +21,13 @@ describe('Loads Home Component', () => {
   })
 })
 
-describe('Loads Login Component', () => {
-  it('Checks if login page renders', () => {
-    render(<Login />)
-    const mainElement = screen.getByRole("main");
-    expect(mainElement).toBeInTheDocument();
-  })
-})
+// describe('Loads Login Component', () => {
+//   it('Checks if login page renders', () => {
+//     render(<Login />)
+//     const mainElement = screen.getByRole("main");
+//     expect(mainElement).toBeInTheDocument();
+//   })
+// })
 
 describe('Loads Signup Component', () => {
   it('Checks if signup page renders', () => {

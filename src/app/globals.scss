@@ -1,9 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+//Colors
+$logo-color: rgb(214, 50, 48);
+$svg-background-black: rgb(10,10,10);
+$darker-background-color: rgb(15,15,15);
+$background-color: rgb(20, 20, 20);
+$input-background-color: rgb(30,30,30);
+$hover-background-color: rgba(143, 143, 143, 0.1);
+$border-color: rgb(65, 65, 65);
+$default-white: rgb(240, 240, 240);
+$default-green: rgb(17, 152, 34);
 
-:root {
-}
+//Numbers
+$open-side-navigation-width: 15rem;
+$minimized-side-navigation-width: 5rem;
+$default-transition: 0.3s;
+$default-border-radius: 0.5rem;
 
-body {
-  margin: 0;
-  padding: 0;
+
+//Other
+$default-border: 0.01rem solid $border-color;
+$default-box-shadow: 0.1rem 0.1rem 1rem black;
+
+//Extensions
+%transition {
+   transition: $default-transition;
+   -webkit-transition: $default-transition;
+   -moz-transition: $default-transition;
+   -o-transition: $default-transition;
 }
