@@ -1,0 +1,38 @@
+@use "../../../app/globals.scss" as global;
+
+//Variables
+$account_icon_size: 2rem;
+
+.top_bar {
+   grid-row: 1;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   border-bottom: 0.1rem solid global.$border-color;
+   gap: 1rem;
+
+   &>* {
+      transition: global.$default-transition;
+      -webkit-transition: global.$default-transition;
+      -moz-transition: global.$default-transition;
+      -o-transition: global.$default-transition;
+   }
+
+   h1 {
+      margin: 1rem 0 1rem 3.75rem;
+      font-size: 2.5rem;
+      color: global.$default-white;
+   }
+
+   svg {
+      color: global.$border-color;
+      height: $account_icon_size;
+      width: $account_icon_size;
+      margin-right: 4rem;
+      cursor: pointer;
+
+      &:hover {
+         color: global.$default-white;
+      }
+   }
+}
