@@ -1,9 +1,9 @@
 //Colors
 $logo-color: rgb(214, 50, 48);
-$svg-background-black: rgb(10,10,10);
-$darker-background-color: rgb(15,15,15);
+$svg-background-black: rgb(10, 10, 10);
+$darker-background-color: rgb(15, 15, 15);
 $background-color: rgb(20, 20, 20);
-$input-background-color: rgb(30,30,30);
+$input-background-color: rgb(30, 30, 30);
 $hover-background-color: rgba(143, 143, 143, 0.1);
 $border-color: rgb(65, 65, 65);
 $default-white: rgb(240, 240, 240);
@@ -18,7 +18,9 @@ $default-border-radius: 0.5rem;
 
 //Other
 $default-border: 0.01rem solid $border-color;
+$active-border: 0.01rem solid $logo-color;
 $default-box-shadow: 0.1rem 0.1rem 1rem black;
+$tooltip-box-shadow: 0.1rem 0.3rem 0.25rem black;
 
 //Extensions
 %transition {
