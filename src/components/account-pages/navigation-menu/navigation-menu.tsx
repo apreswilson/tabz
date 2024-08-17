@@ -30,8 +30,7 @@ export default function NavigationMenu({
             styles.navigation_menu
             :
             styles.minimized_navigation_menu
-      }
-      >
+      }>
          {!isMenuExpanded ?
             <div className={styles.open_mobile_menu} onClick={toggleMenuView}>
                <FontAwesomeIcon icon={faChevronRight} />
@@ -95,6 +94,6 @@ export default function NavigationMenu({
                </li>
             </ul>
          </section>
-      </nav >
+      </nav>
    )
 }

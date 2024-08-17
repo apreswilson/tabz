@@ -17,7 +17,7 @@
    .role {
       font-size: 1.25rem;
       display: flex;
-      flex-direction: column; 
+      flex-direction: column;
 
       input {
          border: 0;
@@ -30,6 +30,10 @@
          border-radius: global.$default-border-radius;
          background-color: global.$darker-background-color;
          outline: none;
+      }
+
+      input:focus {
+         border: global.$active-border;
       }
    }
 

@@ -11,16 +11,9 @@ interface LayoutProps {
 export default function AccountPageLayout({ children }: Readonly<LayoutProps>) {
    const [isMenuExpanded, setIsMenuExpanded] = useState<boolean>(false);
 
-   useEffect(() => {
-      if (window.innerWidth < 700) {
-         setIsMenuExpanded(false);
-      }
-   }, [])
-
    const changeMenuView = () => {
       setIsMenuExpanded(!isMenuExpanded);
    }
-
 
    return (
       <main className={isMenuExpanded ? styles.account_page_layout : styles.account_page_layout__minimized_menu}>

@@ -1,0 +1,67 @@
+@use "../../../app/globals.scss" as global;
+
+.options_dropdown {
+   left: 0rem;
+   width: 100%;
+   top: 0rem;
+   height: 0rem;
+   font-size: 1rem;
+   margin: auto;
+   position: relative;
+
+   .email,
+   .edit,
+   .delete {
+      gap: 0.5rem;
+      padding: 1rem 0;
+      font-size: 1.25rem;
+      background-color: global.$darker-background-color;
+      display: flex;
+      cursor: pointer;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+      @extend %transition;
+
+      span {
+         width: 3rem;
+         left: -4.5rem;
+         font-size: 1rem;
+         padding: 0.25rem 0.5rem;
+         color: global.$default-white;
+         box-shadow: global.$tooltip-box-shadow;
+         border-radius: global.$default-border-radius;
+         background-color: global.$svg-background-black;
+         display: none;
+         position: absolute;
+         pointer-events: none;
+      }
+
+      span::after {
+         top: 50%;
+         right: -22%;
+         margin-top: -0.375rem;
+         border-width: 0.375rem;
+         border-color: transparent transparent transparent global.$svg-background-black;
+         content: "";
+         position: absolute;
+         border-style: solid;
+      }
+
+      &:hover {
+         color: global.$logo-color;
+      }
+
+      &:hover>span {
+         display: inline;
+      }
+   }
+
+   .email {
+      border-radius: 0;
+   }
+
+   .delete {
+      border-radius: 0 0 global.$default-border-radius global.$default-border-radius;
+   }
+}

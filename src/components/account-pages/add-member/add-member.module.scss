@@ -1,0 +1,71 @@
+@use "../../../app/globals.scss" as global;
+
+.add_user {
+   top: 35%;
+   left: 35%;
+   z-index: 10;
+   width: 30%;
+   background-color: global.$background-color;
+   position: fixed;
+   color: global.$default-white;
+   border: global.$default-border;
+   box-shadow: global.$default-box-shadow;
+   text-align: center;
+   display: flex;
+   flex-direction: column;
+   padding: 2rem 1rem;
+   gap: 2rem;
+   align-items: center;
+   border-radius: global.$default-border-radius;
+
+   p {
+      margin: 0;
+   }
+
+   input {
+      padding: 0.5rem;
+      border: 0;
+      width: 85%;
+      outline: 0;
+      font-size: 1.25rem;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      color: global.$default-white;
+   }
+
+   .options {
+      display: flex;
+      gap: 1rem;
+   }
+
+   button {
+      text-align: center;
+      padding: 0.5rem 1rem;
+      font-size: 1.25rem;
+      border-radius: global.$default-border-radius;
+      border: 0;
+      color: global.$default-white;
+      cursor: pointer;
+      @extend %transition;
+
+      &:hover {
+         opacity: 0.8;
+      }
+   }
+
+   .submit {
+      background-color: global.$default-green;
+   }
+
+   .cancel {
+      background-color: global.$logo-color;
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .add_user {
+      width: 75%;
+      left: 10%;
+   }
+}

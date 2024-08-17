@@ -4,6 +4,7 @@
    top: 35%;
    left: 35%;
    width: 30%;
+   z-index: 10;
    line-height: 3rem;
    padding: 2rem 1rem;
    color: global.$default-white;
@@ -12,7 +13,11 @@
    background-color: global.$background-color;
    border-radius: global.$default-border-radius;
    text-align: center;
-   position: absolute;
+   position: fixed;
+
+   p {
+      margin-top: 0;
+   }
 
    span {
       padding: 0.5rem;
@@ -36,7 +41,7 @@
          border-radius: global.$default-border-radius;
          cursor: pointer;
          background: none;
-         @extend %transition; 
+         @extend %transition;
       }
 
       button:hover {
@@ -54,7 +59,7 @@
 }
 
 @media screen and (max-width: 700px) {
-   .delete_user{
+   .delete_user {
       left: 7.5%;
       width: 75%;
    }

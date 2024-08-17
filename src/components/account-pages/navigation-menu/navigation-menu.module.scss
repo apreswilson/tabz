@@ -7,7 +7,6 @@ $minimize-menu-button: 1.5rem;
 $minimize-menu-button-distance-from-left: $open-bar-width-offset;
 $page-icon-size: 1.75rem;
 $page-link-font-size: 1rem;
-$menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
 
 .navigation_menu,
 .minimized_navigation_menu {
@@ -38,7 +37,7 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
 
    svg {
       left: $minimize-menu-button-distance-from-left;
-      @extend %transition; 
+      @extend %transition;
       @extend %menu-svg;
    }
 }
@@ -62,7 +61,7 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
    width: $open-bar-width-offset;
    background-color: global.$border-color;
    margin: auto;
-   @extend %transition; 
+   @extend %transition;
 }
 
 //Desktop but minimized navigation menu
@@ -85,7 +84,7 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
          left: 5rem;
          padding: 0.5rem;
          color: global.$default-white;
-         box-shadow: $menu-svg-box-shadow;
+         box-shadow: global.$tooltip-box-shadow;
          border-radius: global.$default-border-radius;
          background-color: global.$svg-background-black;
          display: none;
@@ -129,7 +128,7 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
       border: none;
       background-color: global.$background-color;
       animation: openMobileMenu global.$default-transition;
-      position: absolute;
+      position: fixed;
 
       .top_area>svg {
          left: 3.75rem;
@@ -138,8 +137,8 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
       .pages>ul,
       .bottom_area>ul {
          li {
-            width: 50%;
-            font-size: 1.5rem;
+            width: 12.5rem;
+            font-size: 1.25rem;
             justify-content: center;
          }
 
@@ -176,7 +175,7 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
       padding: 0.3rem 0 0.3rem 0.5rem;
       color: global.$border-color;
       height: $minimize-menu-button;
-      box-shadow: $menu-svg-box-shadow;
+      box-shadow: global.$tooltip-box-shadow;
       width: calc($minimize-menu-button + 1rem);
       border-radius: global.$default-border-radius;
       background-color: global.$svg-background-black;
@@ -223,7 +222,7 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
       display: flex;
       cursor: pointer;
       align-items: center;
-      @extend %transition; 
+      @extend %transition;
 
       p {
          margin: 0;
@@ -242,9 +241,9 @@ $menu-svg-box-shadow: 0.1rem 0.3rem 0.25rem black;
    padding: 0.5rem 0.75rem;
    color: global.$border-color;
    height: $minimize-menu-button;
+   box-shadow: global.$tooltip-box-shadow;
    border-radius: global.$default-border-radius;
    background-color: global.$svg-background-black;
-   box-shadow: $menu-svg-box-shadow;
    cursor: pointer;
    position: absolute;
 
