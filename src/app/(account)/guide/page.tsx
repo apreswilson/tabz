@@ -1,9 +1,12 @@
+import AccountPageLayout from "@/components/account-pages/account-page-layout";
 import "./guide.module.scss";
 
 export default function Guide() {
    return (
-      <main>
-         <p>This is the guide page</p>
-      </main>
+      <AccountPageLayout>
+         <section>
+            <p>This is the guide page</p>
+         </section>
+      </AccountPageLayout>
    )
 }

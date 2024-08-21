@@ -70,8 +70,8 @@ $page-link-font-size: 1rem;
       left: 3.75rem;
    }
 
-   .pages>ul>li,
-   .bottom_area>ul>li {
+   .pages>ul>li>a,
+   .bottom_area>ul>li>a {
       width: global.$minimized-side-navigation-width;
       justify-content: center;
 
@@ -136,7 +136,7 @@ $page-link-font-size: 1rem;
 
       .pages>ul,
       .bottom_area>ul {
-         li {
+         li>a {
             width: 12.5rem;
             font-size: 1.25rem;
             justify-content: center;
@@ -210,7 +210,7 @@ $page-link-font-size: 1rem;
       }
    }
 
-   li,
+   li>a,
    .bottom_area {
       gap: 0.75rem;
       padding: 1.25rem 0;
@@ -222,6 +222,7 @@ $page-link-font-size: 1rem;
       display: flex;
       cursor: pointer;
       align-items: center;
+      text-decoration: none;
       @extend %transition;
 
       p {

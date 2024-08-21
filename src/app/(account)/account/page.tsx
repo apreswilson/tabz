@@ -1,11 +1,11 @@
 import AccountPageLayout from "@/components/account-pages/account-page-layout";
-import "./tasks.module.scss";
+import styles from "./account.module.scss";
 
-export default function Tasks() {
+export default function Settings() {
    return (
       <AccountPageLayout>
          <section>
-            <p>This is the tasks page</p>
+            <p>Account Page</p>
          </section>
       </AccountPageLayout>
    )
