@@ -1,0 +1,136 @@
+@use "../../../globals.scss" as global;
+$new-shout-default-width: 60%;
+$new-shout-900-width: 80%;
+$new-shout-500-width: 95%;
+
+.new_shout_form {
+   gap: global.$default-gap;
+   color: global.$default-white;
+   width: $new-shout-default-width;
+   margin: global.$default-gap auto;
+   display: flex;
+   flex-direction: column;
+
+   h1 {
+      margin: 0;
+      font-weight: 400;
+      font-size: global.$extra-large-font-size;
+      text-align: center;
+   }
+
+   .title,
+   .content,
+   .relevant_roles {
+      width: 100%;
+      gap: global.$default-gap;
+      display: flex;
+      flex-direction: column;
+
+      label {
+         font-size: global.$larger-font-size;
+      }
+
+      input,
+      textarea,
+      select {
+         outline: none;
+         color: global.$default-white;
+         padding: global.$default-gap;
+         border: global.$default-border;
+         font-size: global.$default-font-size;
+         font-family: global.$default-font-family;
+         border-radius: global.$default-border-radius;
+         background-color: global.$darker-background-color;
+         @extend %transition;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+         border: global.$active-border;
+      }
+
+      .content_area {
+         width: calc(100% - 1rem);
+         height: 15rem;
+         resize: none;
+      }
+   }
+
+   .relevant_roles {
+      .roles_selected {
+         gap: global.$default-gap;
+         display: flex;
+         flex-wrap: wrap;
+      }
+
+      .role {
+         gap: global.$default-gap;
+         padding: global.$default-gap;
+         border: global.$default-border;
+         border-radius: global.$default-border-radius;
+         background-color: global.$input-background-color;
+         display: flex;
+         width: max-content;
+         align-items: center;
+      }
+
+      p {
+         margin: 0;
+      }
+
+      .role>svg {
+         color: global.$logo-color;
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      .role>svg:hover {
+         opacity: 0.8;
+      }
+   }
+
+   .buttons {
+      gap: global.$extra-large-gap;
+      margin-top: global.$default-gap;
+      display: flex;
+
+      button {
+         border: 0;
+         color: global.$default-white;
+         padding: global.$default-gap;
+         font-size: global.$larger-font-size;
+         border-radius: global.$default-border-radius;
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      button:hover {
+         opacity: 0.8;
+      }
+
+      button:nth-child(1) {
+         background-color: global.$default-green;
+      }
+
+      button:nth-child(2) {
+         background-color: global.$logo-color;
+      }
+   }
+}
+
+@media screen and (max-width: 900px) {
+   .new_shout_form {
+      width: $new-shout-900-width;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .new_shout_form {
+      width: $new-shout-500-width;
+
+      .relevant_roles>.roles_selected {
+         flex-direction: column;
+      }
+   }
+}

@@ -1,9 +1,12 @@
+import AccountPageLayout from "@/components/account-pages/account-page-layout";
 import "./dashboard.module.scss";
 
 export default function Dashboard() {
    return (
-      <main>
-         <p>This is the dashboard page</p>
-      </main>
+      <AccountPageLayout>
+         <section>
+            <p>This is the dashboard page</p>
+         </section>
+      </AccountPageLayout>
    )
 }

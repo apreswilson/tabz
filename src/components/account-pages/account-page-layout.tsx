@@ -9,7 +9,8 @@ interface LayoutProps {
 }
 
 export default function AccountPageLayout({ children }: Readonly<LayoutProps>) {
-   const [isMenuExpanded, setIsMenuExpanded] = useState<boolean>(false);
+   const [isMenuExpanded, setIsMenuExpanded] = useState<boolean>(true);
+
 
    const changeMenuView = () => {
       setIsMenuExpanded(!isMenuExpanded);

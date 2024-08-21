@@ -1,50 +1,55 @@
 @use "../../globals.scss" as global;
+$form-section-default-width: 95%;
+$member-list-default-height: 49rem;
+$member-list-900-height: 41rem;
+$member-list-675-height: 38rem;
 
 .form_section {
-   gap: 2rem;
-   padding: 1rem;
-   width: calc(95% - 2rem);
-   margin: 2rem auto auto auto;
-   border: global.$default-border;
+   gap: global.$default-gap;
+   margin: global.$default-gap auto;
+   width: $form-section-default-width;
    display: flex;
    justify-content: space-between;
 
    form {
       width: 75%;
-      border-radius: global.$default-border-radius;
       border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
       display: flex;
+
+      input {
+         border: 0;
+         outline: none;
+         width: calc(100% - 3rem);
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         padding: global.$larger-gap global.$default-gap;
+         font-family: global.$default-font-family;
+         background-color: transparent;
+      }
+
+      button {
+         border: 0;
+         width: 3rem;
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         outline: none;
+         cursor: pointer;
+         background-color: transparent;
+         @extend %transition;
+      }
+
+      button:hover {
+         color: global.$logo-color;
+      }
 
       &:focus-within {
          border: global.$active-border;
       }
    }
 
-   form>input,
-   form>button {
-      border: 0;
-      font-size: 1.25rem;
-      color: global.$default-white;
-      background-color: global.$darker-background-color;
-      outline: none;
-   }
-
-   form>input {
-      padding: calc(1rem + 0.5px) 0.5rem;
-      width: calc(100% - 3rem);
-      border-radius: 0.5rem 0 0 0.5rem;
-   }
-
-   form>button {
-      width: 3rem;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0 0.5rem 0.5rem 0;
-      cursor: pointer;
-      @extend %transition;
-   }
-
    .categories {
-      padding: 0.5rem 0;
       border: global.$default-border;
       border-radius: global.$default-border-radius;
       background-color: global.$darker-background-color;
@@ -53,8 +58,8 @@
 
       label {
          margin: 0;
-         font-size: 1.25rem;
          padding: 0 0.65rem;
+         font-size: global.$default-font-size;
          color: global.$default-white;
          border-right: global.$default-border;
       }
@@ -66,22 +71,21 @@
 
    .categories>select {
       border: 0;
-      height: 100%;
       width: 10rem;
-      padding: 0 0.5rem;
-      font-size: 1.25rem;
-      border-radius: 0.5rem;
       color: global.$default-white;
+      padding: 0 global.$default-gap;
+      font-size: global.$default-font-size;
+      border-radius: global.$default-border-radius;
       background-color: global.$darker-background-color;
       outline: none;
       cursor: pointer;
    }
 
    .add {
-      gap: 0.5rem;
-      font-size: 1rem;
-      padding: 0.25rem 1rem;
+      gap: global.$default-gap;
       color: global.$default-white;
+      padding: 0 global.$extra-large-gap;
+      font-size: global.$default-font-size;
       background-color: global.$logo-color;
       border-radius: global.$default-border-radius;
       border: none;
@@ -98,17 +102,18 @@
 }
 
 .member_list {
-   width: 95%;
-   height: 43rem;
-   margin: 2rem auto auto auto;
    border: global.$default-border;
+   width: $form-section-default-width;
+   height: $member-list-default-height;
+   margin: global.$default-gap auto auto auto;
    overflow-y: auto;
+   scrollbar-width: thin;
 
    .top_row,
    .member {
-      column-gap: 0.5rem;
       grid-template-columns: repeat(3, 1fr) 0.75fr;
       color: global.$default-white;
+      column-gap: global.$default-gap;
       display: grid;
       text-align: center;
       align-items: center;
@@ -128,7 +133,7 @@
    }
 
    .member {
-      padding: 0.5rem 0;
+      padding: global.$default-gap 0;
       border-bottom: 0.01rem solid global.$border-color;
 
       .options {
@@ -171,16 +176,17 @@
       }
 
       form>input {
-         padding: calc(1rem + 0.5px) 0.5rem;
+         padding: global.$larger-gap global.$default-gap;
       }
 
       .categories {
          width: 15rem;
-         padding: calc(0.75rem + 1px) 0;
+         padding: global.$larger-gap 0;
       }
 
       .add {
          width: 7rem;
+         padding: 0.5px 0;
       }
    }
 }
@@ -188,8 +194,8 @@
 @media screen and (max-width: 900px) and (min-width: 676px) {
 
    .member_list {
-      width: 95%;
-      height: 33rem;
+      height: $member-list-900-height;
+      width: $form-section-default-width;
 
       .top_row,
       .member {
@@ -205,8 +211,8 @@
          left: 0rem;
          width: 3rem;
          height: 2.5rem;
-         font-size: 2rem;
          line-height: 2.5rem;
+         font-size: global.$extra-large-font-size;
          border-radius: global.$default-border-radius global.$default-border-radius 0 0;
          margin: auto;
          display: block;
@@ -219,19 +225,18 @@
       .member>.options_mobile>.dropdown_wrapper:hover {
          background-color: global.$darker-background-color;
       }
-
    }
 }
 
 @media screen and (max-width: 675px) {
 
    .mobile_header {
-      width: 95%;
+      width: $form-section-default-width;
       margin: 0 auto;
-      font-size: 2rem;
-      padding: 1.5rem 0;
       color: global.$default-white;
+      padding: global.$default-gap 0;
       border-bottom: global.$default-border;
+      font-size: global.$extra-large-font-size;
       display: block;
       text-align: center;
    }
@@ -239,7 +244,7 @@
    .member_list {
       border: 0;
       margin: 0 auto;
-      height: min-content;
+      height: $member-list-675-height;
    }
 
 
@@ -248,14 +253,14 @@
    }
 
    .member_list>.member {
-      gap: 1rem;
       padding: 2rem 0;
+      gap: global.$extra-large-gap;
       grid-template-columns: auto;
 
       span {
          display: block;
-         font-size: 1.25rem;
          color: global.$logo-color;
+         font-size: global.$larger-font-size;
       }
 
       &>* {
@@ -273,7 +278,7 @@
    .options>.delete>span {
       all: unset !important;
       display: block !important;
-      font-size: 1.25rem !important;
+      font-size: global.$larger-font-size !important;
 
       &::after {
          display: none !important;
@@ -287,7 +292,7 @@
 
 %options {
    gap: 1.5rem;
-   font-size: 1.5rem;
+   font-size: global.$header-font-size;
 
    svg {
       cursor: pointer;
@@ -303,11 +308,11 @@
 
    span {
       width: 3rem;
-      left: -1.25rem;
       top: 2.5rem;
-      font-size: 1rem;
-      padding: 0.5rem;
+      left: -1.25rem;
+      padding: global.$default-gap;
       color: global.$default-white;
+      font-size: global.$default-font-size;
       box-shadow: global.$tooltip-box-shadow;
       border-radius: global.$default-border-radius;
       background-color: global.$svg-background-black;

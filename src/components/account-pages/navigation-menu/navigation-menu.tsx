@@ -1,3 +1,4 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
    faChevronLeft,
@@ -10,10 +11,9 @@ import {
    faBookOpen,
    faGear,
    faUser,
-   faBars
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./navigation-menu.module.scss";
-
+import Link from "next/link";
 interface ExpandMenuProps {
    isMenuExpanded: boolean;
    toggleMenuView: () => void;
@@ -48,34 +48,46 @@ export default function NavigationMenu({
          <section className={styles.pages}>
             <ul>
                <li>
-                  <FontAwesomeIcon icon={faRectangleList} />
-                  {isMenuExpanded ? <p>Dashboard</p> : <></>}
-                  <span className={styles.tool_tip}>Dashboard</span>
+                  <Link href="/dashboard">
+                     <FontAwesomeIcon icon={faRectangleList} />
+                     {isMenuExpanded ? <p>Dashboard</p> : <></>}
+                     <span className={styles.tool_tip}>Dashboard</span>
+                  </Link>
                </li>
                <li>
-                  <FontAwesomeIcon icon={faBullhorn} />
-                  {isMenuExpanded ? <p>Shouts</p> : <></>}
-                  <span className={styles.tool_tip}>Shouts</span>
+                  <Link href="/shouts">
+                     <FontAwesomeIcon icon={faBullhorn} />
+                     {isMenuExpanded ? <p>Shouts</p> : <></>}
+                     <span className={styles.tool_tip}>Shouts</span>
+                  </Link>
                </li>
                <li>
-                  <FontAwesomeIcon icon={faUsers} />
-                  {isMenuExpanded ? <p>Users</p> : <></>}
-                  <span className={styles.tool_tip}>Users</span>
+                  <Link href="/members">
+                     <FontAwesomeIcon icon={faUsers} />
+                     {isMenuExpanded ? <p>Members</p> : <></>}
+                     <span className={styles.tool_tip}>Members</span>
+                  </Link>
                </li>
                <li>
-                  <FontAwesomeIcon icon={faListCheck} />
-                  {isMenuExpanded ? <p>Tasks</p> : <></>}
-                  <span className={styles.tool_tip}>Tasks</span>
+                  <Link href="/tasks">
+                     <FontAwesomeIcon icon={faListCheck} />
+                     {isMenuExpanded ? <p>Tasks</p> : <></>}
+                     <span className={styles.tool_tip}>Tasks</span>
+                  </Link>
                </li>
                <li>
-                  <FontAwesomeIcon icon={faCalendar} />
-                  {isMenuExpanded ? <p>Calendar</p> : <></>}
-                  <span className={styles.tool_tip}>Agenda</span>
+                  <Link href="/calendar">
+                     <FontAwesomeIcon icon={faCalendar} />
+                     {isMenuExpanded ? <p>Calendar</p> : <></>}
+                     <span className={styles.tool_tip}>Agenda</span>
+                  </Link>
                </li>
                <li>
-                  <FontAwesomeIcon icon={faBookOpen} />
-                  {isMenuExpanded ? <p>Guide</p> : <></>}
-                  <span className={styles.tool_tip}>Guide</span>
+                  <Link href="/guide">
+                     <FontAwesomeIcon icon={faBookOpen} />
+                     {isMenuExpanded ? <p>Guide</p> : <></>}
+                     <span className={styles.tool_tip}>Guide</span>
+                  </Link>
                </li>
             </ul>
          </section>
@@ -83,14 +95,18 @@ export default function NavigationMenu({
          <section className={styles.bottom_area}>
             <ul>
                <li>
-                  <FontAwesomeIcon icon={faGear} />
-                  {isMenuExpanded ? <p>Settings</p> : <></>}
-                  <span className={styles.tool_tip}>Settings</span>
+                  <Link href="/settings">
+                     <FontAwesomeIcon icon={faGear} />
+                     {isMenuExpanded ? <p>Settings</p> : <></>}
+                     <span className={styles.tool_tip}>Settings</span>
+                  </Link>
                </li>
                <li>
-                  <FontAwesomeIcon icon={faUser} />
-                  {isMenuExpanded ? <p>Account</p> : <></>}
-                  <span className={styles.tool_tip}>Account</span>
+                  <Link href="/account">
+                     <FontAwesomeIcon icon={faUser} />
+                     {isMenuExpanded ? <p>Account</p> : <></>}
+                     <span className={styles.tool_tip}>Account</span>
+                  </Link>
                </li>
             </ul>
          </section>
