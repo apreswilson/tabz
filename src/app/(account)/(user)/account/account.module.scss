@@ -1,0 +1,109 @@
+@use "../../../globals.scss" as global;
+
+.account_page {
+   display: flex;
+   width: 55%;
+   margin: auto;
+   align-items: center;
+   min-height: 100dvh;
+}
+
+.account_info {
+   color: global.$default-white;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: global.$default-gap;
+   align-items: center;
+   margin: global.$default-gap auto;
+
+   h1 {
+      font-weight: 400;
+      font-size: global.$extra-large-font-size;
+      margin: 0;
+      text-align: left;
+   }
+
+   p {
+      font-size: global.$default-font-size;
+      margin: 0;
+   }
+
+   .fname,
+   .lname,
+   .email,
+   .password {
+      width: 65%;
+      display: flex;
+      flex-direction: column;
+      gap: global.$default-gap;
+
+      label {
+         font-size: global.$header-font-size;
+      }
+
+      input {
+         font-size: global.$default-font-size;
+         font-family: global.$default-font-family;
+         border: global.$default-border;
+         color: global.$default-white;
+         padding: global.$default-gap;
+         background-color: global.$darker-background-color;
+         border-radius: global.$default-border-radius;
+         outline: none;
+         @extend %transition;
+
+      }
+
+      input:focus {
+         border: global.$active-border;
+      }
+   }
+
+   .buttons {
+      display: flex;
+      gap: global.$default-gap;
+      align-items: flex-start;
+      width: 65%;
+
+      button {
+         padding: global.$default-gap;
+         font-size: global.$default-font-size;
+         cursor: pointer;
+         color: global.$default-white;
+         border: 0;
+         border-radius: global.$default-border-radius;
+         width: 5rem;
+         @extend %transition;
+      }
+
+      button:hover {
+         opacity: 0.8;
+      }
+
+      .cancel {
+         background-color: global.$logo-color;
+      }
+
+      .save {
+         background-color: global.$default-green;
+      }
+   }
+}
+
+@media screen and (max-width: 900px) {
+   .account_page {
+      width: 95%;
+   }
+}
+
+@media screen and (max-width: 500px) {
+
+   .fname,
+   .lname,
+   .email,
+   .password,
+   .buttons {
+      width: 95% !important;
+   }
+}

@@ -1,0 +1,138 @@
+@use "../../../globals.scss" as global;
+
+.home {
+   width: 75%;
+   margin: 1rem auto;
+   color: global.$default-white;
+   display: flex;
+   flex-direction: column;
+   gap: global.$default-gap;
+   align-items: center;
+
+
+   h1 {
+      font-size: 2.5rem;
+   }
+
+   h2 {
+      color: global.$logo-color;
+   }
+
+   h1,
+   h2 {
+      font-weight: normal;
+   }
+
+   h1,
+   h2,
+   p {
+      margin: 0;
+   }
+
+   button {
+      padding: global.$default-gap;
+      border-radius: global.$default-border-radius;
+      border: 0;
+      font-size: global.$default-font-size;
+      color: global.$default-white;
+      cursor: pointer;
+      @extend %transition;
+
+      &:hover {
+         opacity: 0.8;
+      }
+   }
+
+   .invites,
+   .organizations,
+   .visit_settings,
+   .new_organization {
+      background-color: global.$darker-background-color;
+      padding: global.$larger-gap;
+      width: 70%;
+      border-radius: global.$default-border-radius;
+      border: global.$default-border;
+      display: flex;
+      gap: global.$extra-large-gap;
+      flex-direction: column;
+   }
+
+   .invite,
+   .organization {
+      display: flex;
+      justify-content: space-between;
+      padding: global.$default-gap 0;
+      border-bottom: global.$default-border;
+      gap: global.$default-gap;
+      align-items: center;
+      cursor: pointer;
+      @extend %transition;
+   }
+
+   .organization:hover {
+      border-bottom: global.$active-border;
+   }
+
+   .decline,
+   .leave,
+   .settings,
+   .create_organization {
+      background-color: global.$logo-color;
+      width: 6rem;
+   }
+
+   .accept {
+      width: 5rem;
+   }
+
+   .options {
+      display: flex;
+      gap: global.$default-gap;
+   }
+
+   .accept {
+      background-color: global.$default-green;
+   }
+
+   .settings>a,
+   .create_organization>a {
+      text-decoration: none;
+      color: global.$default-white;
+      padding: global.$default-gap;
+   }
+}
+
+@media screen and (max-width: 1000px) {
+   .home {
+      width: 95%;
+   }
+}
+
+@media screen and (max-width: 800px) {
+
+   .home>h1 {
+      font-size: 3rem;
+   }
+
+   .home>h2 {
+      font-size: global.$larger-font-size;
+   }
+
+   .home>p {
+      font-size: global.$default-font-size !important;
+   }
+
+   .invites,
+   .organizations,
+   .visit_settings,
+   .new_organization {
+      width: 95% !important;
+   }
+
+   .invite,
+   .organization {
+      flex-direction: column;
+      align-items: flex-start !important;
+   }
+
+}

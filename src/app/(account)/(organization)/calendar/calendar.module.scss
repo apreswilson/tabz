@@ -1,0 +1,343 @@
+@use "../../../globals.scss" as global;
+
+$calendar-section-800-height: 38.25rem;
+
+.calendar_wrapper {
+   grid-template-columns: 1fr 0.25fr;
+   gap: global.$extra-large-gap;
+   color: global.$default-white;
+   display: grid;
+
+   h1 {
+      font-weight: 500;
+   }
+}
+
+.calendar_section {
+   margin: global.$extra-large-gap 0 0 global.$extra-large-gap;
+
+   .top_area {
+      gap: global.$larger-gap;
+      display: flex;
+
+      h1 {
+         margin: 0;
+         font-size: global.$extra-large-font-size;
+      }
+
+      button {
+         font-size: global.$default-font-size;
+         border-radius: global.$default-border-radius;
+         color: global.$default-white;
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      .month_slider {
+         gap: global.$default-gap;
+         display: flex;
+      }
+
+      .previous_month,
+      .next_month {
+         border: global.$default-border;
+         padding: 0.25rem global.$extra-large-gap;
+         background-color: global.$darker-background-color;
+      }
+
+      .previous_month:hover,
+      .next_month:hover {
+         color: global.$logo-color;
+         border: global.$active-border;
+      }
+
+      .add_event {
+         border: 0;
+         background: transparent;
+      }
+
+      .add_event>a {
+         border: 0;
+         gap: global.$default-gap;
+         color: global.$default-white;
+         background-color: global.$logo-color;
+         border-radius: global.$default-border-radius;
+         padding: calc(global.$larger-gap + 2px) global.$larger-gap;
+         display: flex;
+         align-items: center;
+         text-decoration: none;
+      }
+
+      .add_event>a>p {
+         margin: 0;
+      }
+
+      .add_event:hover {
+         opacity: 0.8;
+      }
+   }
+
+   .top_row,
+   .calendar {
+      grid-template-columns: repeat(7, 1fr);
+      margin-top: global.$default-gap;
+      display: grid;
+   }
+
+   .top_row {
+      grid-column: 1 / span 7;
+      border-bottom: global.$default-border;
+      text-align: center;
+
+      p {
+         margin: 0;
+         padding: global.$default-gap 0;
+         border-top: global.$default-border;
+         border-right: global.$default-border;
+      }
+
+      p:nth-child(1) {
+         border-left: global.$default-border;
+      }
+   }
+
+   .calendar>.day {
+      padding: global.$default-gap;
+      border-right: global.$default-border;
+      border-bottom: global.$default-border;
+      @extend %day;
+      @extend %transition;
+   }
+
+   .view_more {
+      @extend %transition;
+   }
+
+   .calendar>.day:nth-child(7n + 2) {
+      border-left: global.$default-border;
+   }
+}
+
+.selected_day_details {
+   padding: 0 global.$default-gap;
+   border-left: global.$default-border;
+   padding-bottom: global.$extra-large-gap;
+   display: flex;
+   flex-direction: column;
+
+   h1 {
+      margin: 0;
+      padding: global.$larger-gap 0;
+      font-size: global.$header-font-size;
+   }
+
+   .day_events {
+      gap: global.$default-gap;
+      display: flex;
+      flex-direction: column;
+
+
+      .event {
+         gap: global.$default-gap;
+         padding: global.$default-gap;
+         border: global.$default-border;
+         border-radius: global.$default-border-radius;
+         display: flex;
+         flex-direction: column;
+         @extend %event-details;
+      }
+
+      .event>details,
+      .event>details>summary {
+         @extend %transition;
+      }
+   }
+}
+
+@media screen and (max-width: 1100px) {
+   .calendar_wrapper {
+      grid-template-columns: 0.75fr 0.25fr;
+   }
+
+   .top_area {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .previous_month,
+      .next_month {
+         padding: global.$larger-gap global.$extra-large-gap !important;
+      }
+   }
+
+   .calendar>.day {
+      &:nth-child(7n + 2) {
+         border-left: 0 !important;
+      }
+
+      &:nth-child(3n + 2) {
+         border-left: global.$default-border !important;
+      }
+
+      &:nth-child(-n + 4) {
+         border-top: global.$default-border !important;
+      }
+   }
+
+   .top_row {
+      display: none !important;
+   }
+
+   .calendar_section>.calendar {
+      grid-template-columns: repeat(3, 1fr);
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .calendar_wrapper {
+      width: 95%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+   }
+
+   .calendar_section {
+      margin: global.$default-gap 0;
+      height: $calendar-section-800-height;
+      overflow-y: scroll;
+      scrollbar-width: thin;
+   }
+
+   .selected_day_details {
+      margin: 0;
+      border-left: 0;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .calendar_section>.calendar {
+      grid-template-columns: auto;
+
+      .day {
+         border-left: 0;
+         border-right: 0;
+      }
+
+      .day:nth-child(3n + 2) {
+         border-left: none !important;
+      }
+
+      .day:nth-child(-n + 4) {
+         border-top: 0 !important;
+      }
+
+      .day:nth-child(2) {
+         border-top: global.$default-border !important;
+      }
+   }
+}
+
+%day {
+   .day_number {
+      width: 2rem;
+      background-color: global.$logo-color;
+      font-size: global.$default-font-size;
+      border-radius: global.$default-border-radius;
+      text-align: center;
+      margin: auto;
+   }
+
+   .calendar_events {
+      gap: global.$default-gap;
+      margin: global.$extra-large-gap 0;
+      display: flex;
+      flex-direction: column;
+
+      p {
+         margin: 0;
+         padding: global.$default-gap 0.25rem;
+         font-size: global.$smaller-font-size;
+         border-radius: global.$default-border-radius;
+         background-color: global.$input-background-color;
+         text-align: center;
+      }
+
+      .view_more {
+         border: global.$default-border;
+         background-color: global.$darker-background-color;
+         cursor: pointer;
+      }
+
+      .view_more:hover {
+         color: global.$logo-color;
+         border: global.$active-border;
+      }
+   }
+
+   &:hover {
+      background-color: global.$darker-background-color;
+   }
+}
+
+%event-details {
+   h2 {
+      margin: 0;
+      font-weight: 500;
+      font-size: global.$default-font-size;
+   }
+
+   .relevant_roles {
+      gap: global.$default-gap;
+      display: flex;
+      flex-direction: column;
+   }
+
+   &>p,
+   .relevant_roles>p {
+      margin: 0;
+      font-size: global.$smaller-font-size;
+   }
+
+
+   .relevant_roles>h3 {
+      margin: 0;
+      font-weight: 500;
+      font-size: global.$default-font-size;
+   }
+
+   .relevant_roles>p {
+      padding: 0.25rem;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$input-background-color;
+   }
+
+   details {
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      cursor: pointer;
+
+      summary,
+      p {
+         padding: global.$default-gap;
+      }
+
+      &>p {
+         font-size: global.$smaller-font-size;
+         cursor: default;
+      }
+
+      summary:hover {
+         color: global.$logo-color;
+      }
+
+      &[open] {
+         box-shadow: global.$default-box-shadow;
+      }
+
+      &[open]>summary {
+         color: global.$logo-color;
+         border-bottom: global.$default-border;
+      }
+   }
+}

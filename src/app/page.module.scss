@@ -1,3 +1,234 @@
-.main{
-  font-family: var(--font-family);
+@use "./globals.scss" as global;
+
+.home_page {
+  width: 85%;
+  margin: auto;
+}
+
+.navbar {
+  display: flex;
+  width: 75%;
+  padding: global.$default-gap 0;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: global.$default-border;
+
+  h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    letter-spacing: 0.25rem;
+    color: global.$logo-color;
+    text-align: center;
+    padding: 0.25rem global.$default-gap;
+  }
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+
+    li {
+      padding: 0.25rem global.$default-gap;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      @extend %transition;
+    }
+
+
+    li:first-child:hover {
+      border: global.$active-border;
+    }
+
+    li:last-child {
+      border: global.$active-border;
+    }
+
+    li:last-child:hover {
+      opacity: 0.8;
+    }
+
+    li>a {
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      color: global.$default-white;
+      font-size: global.$header-font-size;
+    }
+
+    li:last-child>a {
+      color: global.$logo-color;
+    }
+  }
+}
+
+.main_area {
+  color: global.$default-white;
+  width: 90%;
+  margin: 3rem auto;
+
+  h1,
+  h2 {
+    text-align: center;
+    font-weight: normal;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin: auto;
+
+    span {
+      letter-spacing: 0.25rem;
+      color: global.$logo-color;
+      text-align: center;
+      font-weight: 800;
+      padding: 0.25rem global.$default-gap;
+    }
+  }
+
+  .capabilities {
+    margin-top: 5rem;
+
+    .list {
+      display: grid;
+      gap: global.$extra-large-gap;
+      grid-template-columns: repeat(3, 1fr);
+      width: 85%;
+      margin: 2rem auto 0 auto;
+    }
+
+    .list_item {
+      padding: global.$larger-gap;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      @extend %transition;
+    }
+
+    .list_item:hover {
+      background-color: global.$darker-background-color;
+    }
+
+    .list_item>.top {
+      display: flex;
+      align-items: center;
+      gap: global.$extra-large-gap;
+    }
+
+    .top>svg {
+      color: global.$border-color;
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .top>h3 {
+      font-weight: normal;
+      font-size: global.$header-font-size;
+      margin: 0;
+    }
+  }
+}
+
+.footer_area {
+  width: 75%;
+  padding: 2rem 0;
+  border-top: global.$default-border;
+  margin: auto;
+  color: global.$default-white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+
+  p>a {
+    color: global.$default-white;
+    @extend %transition;
+  }
+
+  p>a:hover {
+    color: global.$logo-color;
+  }
+
+  .socials {
+    display: flex;
+    gap: global.$default-gap;
+    justify-content: center;
+  }
+
+  .socials>svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+    @extend %transition;
+  }
+
+  .socials>svg:hover {
+    color: global.$logo-color;
+  }
+}
+
+@media screen and (max-width: 950px) and (min-width: 501px) {
+  .capabilities>.list {
+    width: 100% !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .footer_area {
+    grid-template-columns: auto;
+    gap: global.$extra-large-gap;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 650px) {
+
+  .home_page {
+    width: 95%;
+  }
+
+  .navbar,
+  .navbar>ul {
+    flex-direction: column;
+  }
+
+  .navbar>ul {
+    width: 75%;
+  }
+
+  .main_area {
+
+    h1 {
+      font-size: global.$extra-large-font-size;
+    }
+
+    h2 {
+      font-size: global.$larger-font-size;
+    }
+
+    p {
+      font-size: global.$default-font-size;
+    }
+
+    .list {
+      width: 100% !important;
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  .footer_area {
+    width: 100%;
+  }
 }

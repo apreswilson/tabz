@@ -1,0 +1,147 @@
+@use "../../../globals.scss" as global;
+
+.tasks_section {
+   color: global.$default-white;
+   width: 95%;
+   overflow-x: auto;
+   margin: global.$default-gap auto;
+
+   h1 {
+      font-size: global.$extra-large-font-size;
+      font-weight: 500;
+   }
+
+   .incomplete_tasks,
+   .complete_tasks {
+      @extend %tasks_table;
+   }
+
+   .incomplete_tasks>tfoot>.add_task_details {
+      @extend %new_task_details;
+   }
+
+}
+
+@media screen and (max-width: 800px) {
+
+   .tasks_section>.incomplete_tasks>thead>tr>th,
+   .tasks_section>.complete_tasks>thead>tr>th,
+   .incomplete_tasks>tbody>tr>td,
+   .complete_tasks>tbody>tr>td,
+   .incomplete_tasks>tfoot>tr>td {
+      font-size: 0.75rem;
+      padding: global.$default-gap 0.25rem;
+   }
+
+}
+
+%tasks_table {
+   border-collapse: collapse;
+   width: 100%;
+   min-width: 100%;
+
+   thead>tr {
+      background-color: global.$darker-background-color;
+   }
+
+   th {
+      font-weight: 400;
+      font-size: global.$larger-font-size;
+   }
+
+   th,
+   td {
+      padding: global.$larger-gap 0;
+      text-align: center;
+      border: global.$default-border;
+   }
+
+   td:nth-child(1) th:nth-child(1) {
+      width: 55%;
+   }
+
+   td:nth-child(2),
+   th:nth-child(2) {
+      width: 15%;
+   }
+
+   td:nth-child(3),
+   th:nth-child(3) {
+      width: 10%;
+   }
+
+   td:nth-child(4),
+   th:nth-child(4) {
+      width: 10%;
+   }
+
+   td:nth-child(5),
+   th:nth-child(5) {
+      width: 10%;
+   }
+
+   .priority__low,
+   .priority__medium,
+   .priority__high,
+   .status__not_started,
+   .status__in_progress,
+   .status__complete {
+      cursor: pointer;
+      @extend %transition;
+
+      p {
+         margin: 0;
+      }
+
+      &:hover {
+         background-color: global.$darker-background-color;
+      }
+   }
+
+   .status__complete>p,
+   .priority__low>p {
+      color: global.$default-green;
+   }
+
+   .status__in_progress>p,
+   .priority__medium>p {
+      color: global.$default-orange;
+   }
+
+   .status__not_started>p,
+   .priority__high>p {
+      color: global.$logo-color;
+   }
+
+   tfoot>tr>td {
+      text-align: left;
+      background-color: global.$darker-background-color;
+      cursor: pointer;
+   }
+
+   .add_task>td {
+      padding-left: global.$larger-gap;
+      @extend %transition;
+   }
+
+   .add_task>td:hover {
+      color: global.$logo-color;
+   }
+}
+
+%new_task_details {
+   td {
+      text-align: center;
+   }
+
+   input,
+   select {
+      padding: global.$larger-gap global.$default-gap;
+      background-color: global.$input-background-color;
+      color: global.$default-white;
+      border: 0;
+      width: 50%;
+      border-radius: global.$default-border-radius;
+      margin: 0 global.$default-gap;
+   }
+}

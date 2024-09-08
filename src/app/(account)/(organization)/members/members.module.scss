@@ -1,0 +1,338 @@
+@use "../../../globals.scss" as global;
+$form-section-default-width: 95%;
+$member-list-default-height: 49rem;
+$member-list-900-height: 41rem;
+$member-list-675-height: 38rem;
+
+.form_section {
+   gap: global.$default-gap;
+   margin: global.$default-gap auto;
+   width: $form-section-default-width;
+   display: flex;
+   justify-content: space-between;
+
+   form {
+      width: 75%;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      display: flex;
+
+      input {
+         border: 0;
+         outline: none;
+         width: calc(100% - 3rem);
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         padding: global.$larger-gap global.$default-gap;
+         font-family: global.$default-font-family;
+         background-color: transparent;
+      }
+
+      button {
+         border: 0;
+         width: 3rem;
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         outline: none;
+         cursor: pointer;
+         background-color: transparent;
+         @extend %transition;
+      }
+
+      button:hover {
+         color: global.$logo-color;
+      }
+
+      &:focus-within {
+         border: global.$active-border;
+      }
+   }
+
+   .categories {
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      display: flex;
+      align-items: center;
+
+      label {
+         margin: 0;
+         padding: 0 0.65rem;
+         font-size: global.$default-font-size;
+         color: global.$default-white;
+         border-right: global.$default-border;
+      }
+
+      &:focus-within {
+         border: global.$active-border;
+      }
+   }
+
+   .categories>select {
+      border: 0;
+      width: 10rem;
+      color: global.$default-white;
+      padding: 0 global.$default-gap;
+      font-size: global.$default-font-size;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      outline: none;
+      cursor: pointer;
+   }
+
+   .add {
+      gap: global.$default-gap;
+      color: global.$default-white;
+      padding: 0 global.$extra-large-gap;
+      font-size: global.$default-font-size;
+      background-color: global.$logo-color;
+      border-radius: global.$default-border-radius;
+      border: none;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      @extend %transition;
+
+      &:hover {
+         opacity: 0.8;
+      }
+   }
+}
+
+.member_list {
+   border: global.$default-border;
+   width: $form-section-default-width;
+   height: $member-list-default-height;
+   margin: global.$default-gap auto auto auto;
+   overflow-y: auto;
+   scrollbar-width: thin;
+
+   .top_row,
+   .member {
+      grid-template-columns: repeat(3, 1fr) 0.75fr;
+      color: global.$default-white;
+      column-gap: global.$default-gap;
+      display: grid;
+      text-align: center;
+      align-items: center;
+
+      span {
+         display: none;
+      }
+   }
+
+   .top_row {
+      top: 0;
+      z-index: 1;
+      color: global.$logo-color;
+      box-shadow: global.$default-box-shadow;
+      background-color: global.$background-color;
+      position: sticky;
+   }
+
+   .member {
+      padding: global.$default-gap 0;
+      border-bottom: 0.01rem solid global.$border-color;
+
+      .options {
+         display: flex;
+         justify-content: center;
+         @extend %options;
+      }
+
+      .options>.email,
+      .options>.edit,
+      .options>.delete {
+         position: relative;
+         @extend %tooltip-desktop;
+      }
+
+      .options>.email>a {
+         color: global.$default-white;
+      }
+
+      .options_mobile>.dropdown_wrapper {
+         display: none;
+      }
+
+      &:first-of-type {
+         border-top: 0.01rem solid global.$border-color;
+      }
+   }
+}
+
+.mobile_header {
+   display: none;
+}
+
+@media screen and (max-width: 900px) {
+   .form_section {
+      flex-direction: column;
+
+      form {
+         width: 100%;
+      }
+
+      form>input {
+         padding: global.$larger-gap global.$default-gap;
+      }
+
+      .categories {
+         width: 15rem;
+         padding: global.$larger-gap 0;
+      }
+
+      .add {
+         width: 7rem;
+         padding: 0.5px 0;
+      }
+   }
+}
+
+@media screen and (max-width: 900px) and (min-width: 676px) {
+
+   .member_list {
+      height: $member-list-900-height;
+      width: $form-section-default-width;
+
+      .top_row,
+      .member {
+         grid-template-columns: repeat(3, 1fr) 0.5fr;
+      }
+
+      .member>.options {
+         display: none;
+      }
+
+      .member>.options_mobile>.dropdown_wrapper {
+         top: 0rem;
+         left: 0rem;
+         width: 3rem;
+         height: 2.5rem;
+         line-height: 2.5rem;
+         font-size: global.$extra-large-font-size;
+         border-radius: global.$default-border-radius global.$default-border-radius 0 0;
+         margin: auto;
+         display: block;
+         cursor: pointer;
+         position: relative;
+         align-items: center;
+         justify-content: center;
+      }
+
+      .member>.options_mobile>.dropdown_wrapper:hover {
+         background-color: global.$darker-background-color;
+      }
+   }
+}
+
+@media screen and (max-width: 675px) {
+
+   .mobile_header {
+      width: $form-section-default-width;
+      margin: 0 auto;
+      color: global.$default-white;
+      padding: global.$default-gap 0;
+      border-bottom: global.$default-border;
+      font-size: global.$extra-large-font-size;
+      display: block;
+      text-align: center;
+   }
+
+   .member_list {
+      border: 0;
+      margin: 0 auto;
+      height: $member-list-675-height;
+   }
+
+
+   .member_list>.top_row {
+      display: none;
+   }
+
+   .member_list>.member {
+      padding: 2rem 0;
+      gap: global.$extra-large-gap;
+      grid-template-columns: auto;
+
+      span {
+         display: block;
+         color: global.$logo-color;
+         font-size: global.$larger-font-size;
+      }
+
+      &>* {
+         margin: 0;
+      }
+   }
+
+   .member>.options {
+      display: flex;
+      flex-direction: row;
+   }
+
+   .options>.email>span,
+   .options>.edit>span,
+   .options>.delete>span {
+      all: unset !important;
+      display: block !important;
+      font-size: global.$larger-font-size !important;
+
+      &::after {
+         display: none !important;
+      }
+   }
+
+   .member>.options_mobile {
+      display: none;
+   }
+}
+
+%options {
+   gap: 1.5rem;
+   font-size: global.$header-font-size;
+
+   svg {
+      cursor: pointer;
+      @extend %transition;
+
+      &:hover {
+         color: global.$logo-color;
+      }
+   }
+}
+
+%tooltip-desktop {
+
+   span {
+      width: 3rem;
+      top: 2.5rem;
+      left: -1.25rem;
+      padding: global.$default-gap;
+      color: global.$default-white;
+      font-size: global.$default-font-size;
+      box-shadow: global.$tooltip-box-shadow;
+      border-radius: global.$default-border-radius;
+      background-color: global.$svg-background-black;
+      display: none;
+      position: absolute;
+      pointer-events: none;
+   }
+
+   span::after {
+      top: -10%;
+      right: 40%;
+      margin-top: -0.375rem;
+      border-width: 0.375rem;
+      border-color: transparent transparent global.$svg-background-black transparent;
+      content: "";
+      position: absolute;
+      border-style: solid;
+   }
+
+   &:hover>span {
+      display: inline;
+   }
+}

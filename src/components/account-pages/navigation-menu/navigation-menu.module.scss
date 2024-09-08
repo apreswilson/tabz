@@ -129,6 +129,7 @@ $page-link-font-size: 1rem;
       background-color: global.$background-color;
       animation: openMobileMenu global.$default-transition;
       position: fixed;
+      overflow-y: scroll;
 
       .top_area>svg {
          left: 3.75rem;
