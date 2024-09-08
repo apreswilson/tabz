@@ -1,0 +1,34 @@
+@use "../../../app/globals.scss" as global;
+
+.priority_options {
+   margin-top: global.$default-gap;
+   border-radius: global.$default-border-radius;
+   border-top: global.$default-border;
+
+   p {
+      background-color: global.$darker-background-color;
+      margin: 0;
+      padding: global.$default-gap;
+      @extend %transition;
+      cursor: pointer;
+   }
+
+   .low {
+      color: global.$default-green;
+   }
+
+   .medium {
+      color: global.$default-orange;
+   }
+
+   .high {
+      color: global.$logo-color;
+   }
+
+
+   .low:hover,
+   .medium:hover,
+   .high:hover {
+      opacity: 0.6;
+   }
+}

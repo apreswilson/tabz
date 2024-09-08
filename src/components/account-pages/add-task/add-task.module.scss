@@ -1,0 +1,84 @@
+@use "../../../app/globals.scss" as global;
+
+.add_task_form {
+   display: grid;
+   grid-template-columns: 55% 15% repeat(3, 10%);
+   background-color: global.$darker-background-color;
+   border-left: global.$default-border;
+   border-right: global.$default-border;
+   border-bottom: global.$default-border;
+
+
+   div {
+      display: flex;
+      gap: global.$default-gap;
+      flex-direction: column;
+      padding: global.$larger-gap;
+
+      input,
+      select {
+         padding: global.$default-gap;
+         border: global.$default-border;
+         outline: none;
+         background-color: global.$darker-background-color;
+         border-radius: global.$default-border-radius;
+         color: global.$default-white;
+         font-family: global.$default-font-family;
+         @extend %transition;
+      }
+
+      input:focus,
+      select:focus {
+         border: global.$active-border;
+      }
+   }
+
+   .submit_area {
+      display: flex;
+      justify-content: center;
+
+      button {
+         padding: global.$default-gap;
+         border: 0;
+         outline: none;
+         font-size: global.$larger-font-size;
+         border-radius: global.$default-border-radius;
+         background-color: global.$logo-color;
+         color: global.$default-white;
+         cursor: pointer;
+         width: 25%;
+         @extend %transition;
+      }
+
+      button:hover {
+         opacity: 0.8;
+      }
+   }
+}
+
+@media screen and (max-width: 1150px) {
+   .add_task_form {
+      grid-template-columns: 50% 50%;
+
+      .submit_area {
+         justify-content: end;
+      }
+
+      .submit_area>button {
+         width: 100%;
+      }
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .add_task_form {
+      font-size: global.$smaller-font-size;
+      grid-template-columns: auto;
+
+      input,
+      select,
+      button {
+         font-size: global.$smaller-font-size;
+      }
+   }
+}

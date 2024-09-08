@@ -1,0 +1,345 @@
+@use "../../../globals.scss" as global;
+$shouts-section-default-width: 95%;
+$shouts-section-default-height: 49rem;
+$shouts-section-1280-height: 41rem;
+$shouts-section-950-height: 35rem;
+$shouts-section-500-height: 23rem;
+
+.top_area {
+   gap: global.$default-gap;
+   margin: global.$default-gap auto;
+   width: $shouts-section-default-width;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   .search {
+      width: 30%;
+      display: flex;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+
+      input {
+         border: 0;
+         width: calc(100% - 3rem);
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         font-family: global.$default-font-family;
+         padding: global.$larger-gap global.$default-gap;
+         outline: none;
+         background-color: transparent;
+      }
+
+      button {
+         border: 0;
+         width: 3rem;
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         outline: none;
+         cursor: pointer;
+         background-color: transparent;
+      }
+
+      button:hover {
+         color: global.$logo-color;
+      }
+
+      &:focus-within {
+         border: global.$active-border;
+      }
+   }
+
+   .categories,
+   .latest_date,
+   .earliest_date {
+      width: 17rem;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      display: flex;
+      align-items: center;
+      @extend %transition;
+
+      label {
+         margin: 0;
+         color: global.$default-white;
+         padding: global.$larger-gap 0.65rem;
+         font-size: global.$default-font-size;
+         border-right: global.$default-border;
+      }
+
+      &:focus-within {
+         border: global.$active-border;
+      }
+   }
+
+   .categories>select,
+   .latest_date>input,
+   .earliest_date>input {
+      border: 0;
+      height: 100%;
+      width: 100%;
+      color: global.$default-white;
+      border-radius: global.$default-gap;
+      padding-inline: global.$default-gap;
+      font-size: global.$default-font-size;
+      font-family: global.$default-font-family;
+      padding-block: calc(global.$larger-gap - 1px);
+      background-color: global.$darker-background-color;
+      outline: none;
+      cursor: pointer;
+   }
+
+   .latest_date>input,
+   .earliest_date>input {
+      color-scheme: dark;
+   }
+
+   .categories>select {
+      padding: global.$larger-gap global.$default-gap;
+   }
+
+   .new_shout {
+      padding: 0.5px global.$default-gap;
+      background-color: global.$logo-color;
+      border-radius: global.$default-border-radius;
+      border: none;
+   }
+
+   .new_shout>a {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      gap: global.$default-gap;
+      color: global.$default-white;
+      font-size: global.$default-font-size;
+      border: none;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+      text-decoration: none;
+      justify-content: center;
+      @extend %transition;
+
+      &:hover {
+         opacity: 0.8;
+      }
+   }
+}
+
+.shouts_list {
+   color: global.$default-white;
+   border: global.$default-border;
+   margin: global.$default-gap auto;
+   padding: 0 global.$extra-large-gap;
+   height: $shouts-section-default-height;
+   width: calc($shouts-section-default-width - 2rem);
+   overflow-y: scroll;
+   scrollbar-width: thin;
+
+   .shout {
+      @extend %shout;
+
+      details>summary {
+         @extend %transition;
+      }
+
+      &:last-of-type {
+         border: 0;
+      }
+   }
+
+   .view_more {
+      padding: global.$extra-large-gap 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      button {
+         color: global.$default-white;
+         padding: global.$default-gap;
+         border: global.$default-border;
+         font-size: global.$larger-font-size;
+         box-shadow: global.$tooltip-box-shadow;
+         border-radius: global.$default-border-radius;
+         background-color: global.$darker-background-color;
+         outline: none;
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      button:hover {
+         color: global.$logo-color;
+         border: global.$active-border;
+      }
+   }
+}
+
+@media screen and (max-width: 1280px) {
+   .top_area {
+      grid-template-columns: 1fr 1fr 1fr;
+      display: grid;
+      align-items: flex-start;
+
+      .search {
+         width: 100%;
+         grid-column: 1 / span 3;
+      }
+
+      .categories,
+      .latest_date,
+      .earliest_date {
+         width: 100%;
+      }
+   }
+
+   .shouts_list {
+      height: $shouts-section-1280-height;
+   }
+}
+
+@media screen and (max-width: 950px) {
+   .top_area {
+      grid-template-columns: 1fr 1fr;
+
+      .search {
+         grid-column: 1 / span 2;
+      }
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .top_area>.new_shout {
+      height: 100%;
+      font-size: global.$header-font-size;
+   }
+
+   .top_area>.categories,
+   .top_area>.latest_date,
+   .top_area>.earliest_date {
+      padding: 0;
+      flex-direction: column;
+      align-items: flex-start;
+
+      label {
+         border-right: 0;
+         width: calc(100% - 1.5rem);
+         padding: global.$larger-gap;
+         border-bottom: global.$default-border;
+      }
+
+      input {
+         width: 85%;
+         padding: global.$larger-gap;
+      }
+
+      select {
+         padding: calc(global.$larger-gap + 1px) global.$larger-gap;
+      }
+   }
+
+   .shout>.roles_to_address {
+      flex-direction: column;
+      align-items: flex-start;
+   }
+
+   .shouts_list {
+      height: $shouts-section-950-height;
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .top_area {
+      grid-template-columns: 1fr;
+
+      .search {
+         grid-column: span 1;
+      }
+   }
+
+   .shouts_list {
+      height: $shouts-section-500-height;
+   }
+}
+
+%shout {
+   gap: global.$larger-gap;
+   padding: global.$extra-large-gap 0;
+   border-bottom: global.$default-border;
+   display: flex;
+   flex-direction: column;
+
+   h1 {
+      margin: 0;
+      color: global.$logo-color;
+      font-size: global.$header-font-size;
+   }
+
+   .shout__bar {
+      width: 100%;
+      height: 0.01rem;
+      background-color: global.$border-color;
+   }
+
+   h2 {
+      margin: 0;
+      font-weight: 500;
+      font-size: global.$default-font-size;
+   }
+
+   h2>span {
+      padding: 0 0.25rem;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$input-background-color;
+   }
+
+   .roles_to_address {
+      margin: 0;
+      gap: global.$default-gap;
+      display: flex;
+
+      h2 {
+         margin: 0;
+      }
+
+      p {
+         margin: 0;
+         padding: 0.25rem;
+         border: global.$default-border;
+         font-size: global.$smaller-font-size;
+         border-radius: global.$default-border-radius;
+         background-color: global.$input-background-color;
+      }
+   }
+
+   details {
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      cursor: pointer;
+
+      summary {
+         padding: global.$extra-large-gap;
+      }
+
+      summary:hover {
+         color: global.$logo-color;
+      }
+
+      article {
+         padding: global.$extra-large-gap;
+         cursor: default;
+      }
+
+      &[open] {
+         box-shadow: global.$default-box-shadow;
+      }
+
+      &[open]>summary {
+         color: global.$logo-color;
+         border-bottom: global.$default-border;
+      }
+   }
+}

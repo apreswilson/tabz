@@ -1,0 +1,233 @@
+@use "../../../globals.scss" as global;
+
+.update_settings {
+   color: global.$default-white;
+   width: 75%;
+   margin: global.$default-gap auto;
+   display: flex;
+   flex-direction: column;
+   gap: global.$default-gap;
+   @extend %general-formats;
+
+
+   .button_options {
+      flex-direction: row;
+      gap: 0;
+
+      .active {
+         border: global.$default-border;
+         background-color: global.$logo-color;
+      }
+
+      .inactive {
+         border: global.$default-border;
+         background-color: global.$darker-background-color;
+      }
+
+      .save {
+         background-color: global.$default-green;
+         border: 0;
+         border-radius: global.$default-border-radius;
+      }
+
+      .cancel {
+         background-color: global.$logo-color;
+         border: 0;
+         border-radius: global.$default-border-radius;
+      }
+   }
+
+   .submission_buttons {
+      gap: global.$default-gap;
+   }
+}
+
+.admin_update_settings {
+   color: global.$default-white;
+   width: 75%;
+   margin: global.$default-gap auto;
+   display: flex;
+   flex-direction: column;
+   gap: global.$default-gap;
+   @extend %general-formats;
+
+   .organization_name>input {
+      width: 50%;
+   }
+
+   .role_to_add {
+      display: flex;
+      gap: global.$default-gap;
+
+      input {
+         width: 40%;
+      }
+
+      .add_role {
+         background-color: global.$default-green;
+         border-radius: global.$default-border-radius;
+         border: 0;
+      }
+   }
+
+   .role_list {
+      border: global.$default-border;
+   }
+
+   .top_area {
+      display: flex;
+      padding: global.$default-gap;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 2rem;
+      border-bottom: global.$default-border;
+
+      input {
+         width: 50%;
+      }
+   }
+
+   .roles {
+      padding: global.$default-gap;
+
+      details {
+         background-color: global.$darker-background-color;
+         padding: global.$default-gap;
+         border-radius: global.$default-border-radius;
+         border: global.$default-border;
+      }
+
+      summary {
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      summary:hover {
+         color: global.$logo-color;
+      }
+
+      details>.role_permissions>div {
+         flex-direction: row;
+         align-items: center;
+      }
+
+      .role_permissions>div>input[type="checkbox"] {
+         height: 1.25rem;
+         width: 1.25rem;
+         appearance: none;
+      }
+
+      .role_permissions>div>input:not(:checked) {
+         background-color: global.$darker-background-color;
+         border-radius: 0;
+         border: global.$default-border;
+      }
+
+      .role_permissions>div>input:checked {
+         background-color: global.$logo-color;
+         border-radius: 0;
+         border: 0;
+      }
+
+      .role_permissions>.delete_role>button {
+         background-color: global.$logo-color;
+         border-radius: global.$default-border-radius;
+         border: 0;
+         width: max-content;
+      }
+   }
+
+   .admin_button_options {
+      flex-direction: row;
+
+      button {
+         border-radius: global.$default-border-radius;
+         border: 0;
+      }
+
+      .admin_cancel {
+         background-color: global.$logo-color;
+      }
+
+      .admin_update {
+         background-color: global.$default-green;
+      }
+   }
+}
+
+@media screen and (max-width: 700px) {
+
+   .update_settings,
+   .admin_update_settings {
+      width: 95%;
+   }
+
+   .organization_information>.organization_name>input {
+      width: 95%;
+   }
+
+   .add_roles>.role_to_add>input {
+      width: 75%;
+   }
+
+   .role_list>.top_area>.role_search {
+      width: 75%;
+   }
+}
+
+%general-formats {
+   h1 {
+      font-size: global.$extra-large-font-size;
+      font-weight: 500;
+      margin: 0;
+      padding-bottom: global.$default-gap;
+      border-bottom: global.$default-border;
+   }
+
+   h2 {
+      font-weight: 500;
+      font-size: global.$header-font-size;
+      margin: 0;
+   }
+
+   p {
+      margin: 0;
+   }
+
+   div {
+      padding: global.$default-gap 0;
+      display: flex;
+      flex-direction: column;
+      gap: global.$default-gap;
+   }
+
+   input {
+      font-size: global.$default-font-size;
+      font-family: global.$default-font-family;
+      border: global.$default-border;
+      color: global.$default-white;
+      padding: global.$default-gap;
+      background-color: global.$darker-background-color;
+      border-radius: global.$default-border-radius;
+      outline: none;
+      @extend %transition;
+
+      &:focus {
+         border: global.$active-border;
+      }
+   }
+
+   button {
+      padding: global.$default-gap;
+      font-size: global.$default-font-size;
+      cursor: pointer;
+      color: global.$default-white;
+      width: 5rem;
+      @extend %transition;
+   }
+
+   button:hover {
+      opacity: 0.8;
+   }
+}

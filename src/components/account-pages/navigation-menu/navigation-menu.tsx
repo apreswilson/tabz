@@ -11,6 +11,10 @@ import {
    faBookOpen,
    faGear,
    faUser,
+   faCircleLeft,
+   faArrowLeft,
+   faDoorOpen,
+   faHouse
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./navigation-menu.module.scss";
 import Link from "next/link";
@@ -102,10 +106,10 @@ export default function NavigationMenu({
                   </Link>
                </li>
                <li>
-                  <Link href="/account">
-                     <FontAwesomeIcon icon={faUser} />
-                     {isMenuExpanded ? <p>Account</p> : <></>}
-                     <span className={styles.tool_tip}>Account</span>
+                  <Link href="/home">
+                     <FontAwesomeIcon icon={faHouse} />
+                     {isMenuExpanded ? <p>Home</p> : <></>}
+                     <span className={styles.tool_tip}>Home</span>
                   </Link>
                </li>
             </ul>

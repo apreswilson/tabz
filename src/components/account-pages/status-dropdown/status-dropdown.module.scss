@@ -1,0 +1,35 @@
+@use "../../../app/globals.scss" as global;
+
+.status_options {
+   margin-top: global.$default-gap;
+   border-radius: global.$default-border-radius;
+   border-top: global.$default-border;
+
+   p {
+      background-color: global.$darker-background-color;
+      margin: 0;
+      padding: global.$default-gap;
+      text-align: center;
+      @extend %transition;
+      cursor: pointer;
+   }
+
+   .completed {
+      color: global.$default-green;
+   }
+
+   .in_progress {
+      color: global.$default-orange;
+   }
+
+   .not_started {
+      color: global.$logo-color;
+   }
+
+
+   .completed:hover,
+   .in_progress:hover,
+   .not_started:hover {
+      opacity: 0.6;
+   }
+}

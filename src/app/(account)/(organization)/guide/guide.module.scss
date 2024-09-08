@@ -1,0 +1,50 @@
+@use "../../../globals.scss" as global;
+
+.guide_page {
+   color: global.$default-white;
+   width: 85%;
+   margin: global.$default-gap auto;
+   display: flex;
+   flex-direction: column;
+   gap: global.$default-gap;
+
+   h1,
+   h2,
+   h3 {
+      font-weight: 500;
+      margin: 0;
+      padding: global.$default-gap 0;
+   }
+
+   h1 {
+      font-size: global.$extra-large-font-size;
+      border-bottom: global.$default-border;
+   }
+
+   h2 {
+      font-size: global.$header-font-size;
+      color: global.$logo-color;
+      border-bottom: global.$default-border;
+   }
+
+   h3 {
+      font-size: global.$larger-font-size;
+   }
+
+   .dashboard_guide,
+   .shouts_guide,
+   .members_guide,
+   .tasks_guide,
+   .calendar_guide {
+      display: flex;
+      flex-direction: column;
+      gap: global.$default-gap;
+
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .guide_page {
+      width: 95%;
+   }
+}

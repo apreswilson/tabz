@@ -1,0 +1,83 @@
+@use "../../../globals.scss" as global;
+
+.create_organization {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   min-height: 100dvh;
+   gap: global.$default-gap;
+   color: global.$default-white;
+   width: 75%;
+   margin: auto;
+
+   h1,
+   p {
+      margin: 0;
+      text-align: center;
+   }
+
+   h1 {
+      font-weight: normal;
+      font-size: global.$extra-large-font-size;
+   }
+
+   form {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: global.$default-gap;
+      width: 100%;
+
+      label {
+         text-align: left;
+         width: 50%;
+      }
+
+      input {
+         font-size: global.$default-font-size;
+         font-family: global.$default-font-family;
+         border: global.$default-border;
+         color: global.$default-white;
+         padding: global.$default-gap;
+         background-color: global.$darker-background-color;
+         border-radius: global.$default-border-radius;
+         outline: none;
+         width: 50%;
+         @extend %transition;
+
+      }
+
+      input:focus {
+         border: global.$active-border;
+      }
+
+      button {
+         width: 15rem;
+         padding: global.$default-gap;
+         border-radius: global.$default-border-radius;
+         background-color: global.$logo-color;
+         font-size: global.$larger-font-size;
+         border: 0;
+         cursor: pointer;
+         color: global.$default-white;
+         @extend %transition;
+      }
+   }
+}
+
+@media screen and (max-width: 700px) {
+   .create_organization {
+      width: 95%;
+
+      form>input,
+      form>label {
+         width: 95%;
+      }
+
+      form>button {
+         width: calc(95% + #{global.$extra-large-gap});
+      }
+   }
+}
