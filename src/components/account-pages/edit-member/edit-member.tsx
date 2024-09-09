@@ -13,7 +13,11 @@ export default function EditMember() {
          </div>
          <div className={styles.role}>
             <label htmlFor="role">Role</label>
-            <input type="text" placeholder="Web Developer" name="role" id="role"></input>
+            <select id="role">
+               <option>Role A</option>
+               <option>Role B</option>
+               <option>Role C</option>
+            </select>
          </div>
          <div className={styles.buttons}>
             <button className={styles.cancel}>Cancel</button>

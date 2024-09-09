@@ -1,6 +1,5 @@
 @use "../../../globals.scss" as global;
 
-$calendar-section-800-height: 38.25rem;
 
 .calendar_wrapper {
    grid-template-columns: 1fr 0.25fr;
@@ -202,8 +201,6 @@ $calendar-section-800-height: 38.25rem;
 
    .calendar_section {
       margin: global.$default-gap 0;
-      height: $calendar-section-800-height;
-      overflow-y: scroll;
       scrollbar-width: thin;
    }
 
@@ -251,6 +248,11 @@ $calendar-section-800-height: 38.25rem;
       margin: global.$extra-large-gap 0;
       display: flex;
       flex-direction: column;
+
+      a {
+         text-decoration: none;
+         color: global.$default-white;
+      }
 
       p {
          margin: 0;

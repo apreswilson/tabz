@@ -6,38 +6,38 @@
    width: 30%;
    z-index: 10;
    line-height: 3rem;
-   padding: 2rem 1rem;
    color: global.$default-white;
    border: global.$default-border;
+   padding: 2rem global.$extra-large-gap;
    box-shadow: global.$default-box-shadow;
    background-color: global.$background-color;
    border-radius: global.$default-border-radius;
-   text-align: center;
    position: fixed;
+   text-align: center;
 
    p {
       margin-top: 0;
    }
 
    span {
-      padding: 0.5rem;
-      border-radius: 0.5rem;
+      padding: global.$default-gap;
       border: global.$default-border;
+      border-radius: global.$default-border-radius;
       background-color: global.$darker-background-color;
    }
 
    .options {
-      gap: 1rem;
+      gap: global.$extra-large-gap;
       display: flex;
       align-items: center;
       justify-content: center;
 
       button {
          width: 4rem;
-         padding: 0.5rem;
-         font-size: 1.25rem;
+         padding: global.$default-gap;
          color: global.$default-white;
          border: global.$default-border;
+         font-size: global.$larger-font-size;
          border-radius: global.$default-border-radius;
          cursor: pointer;
          background: none;

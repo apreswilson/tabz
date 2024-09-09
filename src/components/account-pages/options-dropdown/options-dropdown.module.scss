@@ -1,20 +1,20 @@
 @use "../../../app/globals.scss" as global;
 
 .options_dropdown {
+   top: 0rem;
    left: 0rem;
    width: 100%;
-   top: 0rem;
    height: 0rem;
-   font-size: 1rem;
+   font-size: global.$default-font-size;
    margin: auto;
    position: relative;
 
    .email,
    .edit,
    .delete {
-      gap: 0.5rem;
-      padding: 1rem 0;
       font-size: 1.25rem;
+      gap: global.$default-gap;
+      padding: global.$extra-large-gap 0;
       background-color: global.$darker-background-color;
       display: flex;
       cursor: pointer;
@@ -26,9 +26,9 @@
       span {
          width: 3rem;
          left: -4.5rem;
-         font-size: 1rem;
-         padding: 0.25rem 0.5rem;
          color: global.$default-white;
+         font-size: global.$extra-large-gap;
+         padding: 0.25rem global.$default-gap;
          box-shadow: global.$tooltip-box-shadow;
          border-radius: global.$default-border-radius;
          background-color: global.$svg-background-black;

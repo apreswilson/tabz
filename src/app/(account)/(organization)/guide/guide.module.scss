@@ -1,29 +1,29 @@
 @use "../../../globals.scss" as global;
 
 .guide_page {
-   color: global.$default-white;
    width: 85%;
+   gap: global.$default-gap;
+   color: global.$default-white;
    margin: global.$default-gap auto;
    display: flex;
    flex-direction: column;
-   gap: global.$default-gap;
 
    h1,
    h2,
    h3 {
-      font-weight: 500;
       margin: 0;
+      font-weight: 500;
       padding: global.$default-gap 0;
    }
 
    h1 {
-      font-size: global.$extra-large-font-size;
       border-bottom: global.$default-border;
+      font-size: global.$extra-large-font-size;
    }
 
    h2 {
-      font-size: global.$header-font-size;
       color: global.$logo-color;
+      font-size: global.$header-font-size;
       border-bottom: global.$default-border;
    }
 
@@ -36,10 +36,9 @@
    .members_guide,
    .tasks_guide,
    .calendar_guide {
+      gap: global.$default-gap;
       display: flex;
       flex-direction: column;
-      gap: global.$default-gap;
-
    }
 }
 

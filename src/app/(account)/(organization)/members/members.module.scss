@@ -236,7 +236,8 @@ $member-list-675-height: 38rem;
       color: global.$default-white;
       padding: global.$default-gap 0;
       border-bottom: global.$default-border;
-      font-size: global.$extra-large-font-size;
+      font-size: global.$header-font-size;
+      font-weight: normal;
       display: block;
       text-align: center;
    }

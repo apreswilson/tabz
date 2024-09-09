@@ -2,15 +2,15 @@
 
 .priority_options {
    margin-top: global.$default-gap;
-   border-radius: global.$default-border-radius;
    border-top: global.$default-border;
+   border-radius: global.$default-border-radius;
 
    p {
-      background-color: global.$darker-background-color;
       margin: 0;
       padding: global.$default-gap;
-      @extend %transition;
+      background-color: global.$darker-background-color;
       cursor: pointer;
+      @extend %transition;
    }
 
    .low {

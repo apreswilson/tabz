@@ -2,51 +2,51 @@
 
 .add_user {
    top: 35%;
+   gap: 2rem;
    left: 35%;
-   z-index: 10;
    width: 30%;
-   background-color: global.$background-color;
-   position: fixed;
+   z-index: 10;
    color: global.$default-white;
    border: global.$default-border;
+   padding: 2rem global.$extra-large-gap;
    box-shadow: global.$default-box-shadow;
-   text-align: center;
-   display: flex;
-   flex-direction: column;
-   padding: 2rem 1rem;
-   gap: 2rem;
-   align-items: center;
+   background-color: global.$background-color;
    border-radius: global.$default-border-radius;
+   display: flex;
+   position: fixed;
+   text-align: center;
+   align-items: center;
+   flex-direction: column;
 
    p {
       margin: 0;
    }
 
    input {
-      padding: 0.5rem;
       border: 0;
       width: 85%;
       outline: 0;
-      font-size: 1.25rem;
+      padding: global.$default-gap;
+      color: global.$default-white;
       border: global.$default-border;
+      font-size: global.$larger-font-size;
       border-radius: global.$default-border-radius;
       background-color: global.$darker-background-color;
-      color: global.$default-white;
    }
 
    .options {
       display: flex;
-      gap: 1rem;
+      gap: global.$extra-large-gap;
    }
 
    button {
-      text-align: center;
-      padding: 0.5rem 1rem;
-      font-size: 1.25rem;
-      border-radius: global.$default-border-radius;
       border: 0;
       color: global.$default-white;
+      font-size: global.$larger-font-size;
+      border-radius: global.$default-border-radius;
+      padding: global.$default-gap global.$extra-large-gap;
       cursor: pointer;
+      text-align: center;
       @extend %transition;
 
       &:hover {
@@ -65,7 +65,7 @@
 
 @media screen and (max-width: 800px) {
    .add_user {
-      width: 75%;
       left: 10%;
+      width: 75%;
    }
 }

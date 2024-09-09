@@ -1,12 +1,12 @@
 import AccountPageLayout from "@/components/account-pages/account-page-layout";
 import styles from "./shouts.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
    faBullhorn,
    faMagnifyingGlass
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import ActionPopup from "@/components/account-pages/action-popup/action-popup";
 
 export default function Shouts() {
    return (
@@ -116,6 +116,7 @@ export default function Shouts() {
                   <button>View More</button>
                </div>
             </section>
+            {/* <ActionPopup /> */}
          </section>
       </AccountPageLayout>
    )

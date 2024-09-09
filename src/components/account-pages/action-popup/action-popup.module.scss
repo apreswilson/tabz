@@ -1,0 +1,25 @@
+@use "../../../app/globals.scss" as global;
+
+.action_popup {
+   top: 90%;
+   left: 35%;
+   width: 25%;
+   padding: global.$default-gap;
+   color: global.$default-white;
+   background-color: global.$logo-color;
+   border-radius: global.$default-border-radius;
+   position: fixed;
+
+   h1 {
+      margin: 0;
+      text-align: center;
+      font-weight: normal;
+   }
+}
+
+@media screen and (max-width: 600px) {
+   .action_popup {
+      width: 70%;
+      left: 12.5%;
+   }
+}
