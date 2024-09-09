@@ -1,32 +1,32 @@
 @use "../../../globals.scss" as global;
 
 .account_page {
-   display: flex;
    width: 55%;
-   margin: auto;
-   align-items: center;
    min-height: 100dvh;
+   margin: auto;
+   display: flex;
+   align-items: center;
 }
 
 .account_info {
-   color: global.$default-white;
    width: 100%;
-   display: flex;
-   flex-direction: column;
-   gap: global.$default-gap;
-   align-items: center;
+   color: global.$default-white;
+   gap: global.$extra-large-gap;
    margin: global.$default-gap auto;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
 
    h1 {
+      margin: 0;
       font-weight: 400;
       font-size: global.$extra-large-font-size;
-      margin: 0;
       text-align: left;
    }
 
    p {
-      font-size: global.$default-font-size;
       margin: 0;
+      font-size: global.$default-font-size;
    }
 
    .fname,
@@ -34,22 +34,22 @@
    .email,
    .password {
       width: 65%;
+      gap: global.$default-gap;
       display: flex;
       flex-direction: column;
-      gap: global.$default-gap;
 
       label {
          font-size: global.$header-font-size;
       }
 
       input {
-         font-size: global.$default-font-size;
-         font-family: global.$default-font-family;
-         border: global.$default-border;
          color: global.$default-white;
          padding: global.$default-gap;
-         background-color: global.$darker-background-color;
+         border: global.$default-border;
+         font-size: global.$default-font-size;
+         font-family: global.$default-font-family;
          border-radius: global.$default-border-radius;
+         background-color: global.$darker-background-color;
          outline: none;
          @extend %transition;
 
@@ -61,19 +61,19 @@
    }
 
    .buttons {
-      display: flex;
-      gap: global.$default-gap;
-      align-items: flex-start;
       width: 65%;
+      gap: global.$default-gap;
+      display: flex;
+      align-items: flex-start;
 
       button {
-         padding: global.$default-gap;
-         font-size: global.$default-font-size;
-         cursor: pointer;
-         color: global.$default-white;
          border: 0;
-         border-radius: global.$default-border-radius;
          width: 5rem;
+         cursor: pointer;
+         padding: global.$default-gap;
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         border-radius: global.$default-border-radius;
          @extend %transition;
       }
 

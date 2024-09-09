@@ -16,13 +16,12 @@ $page-link-font-size: 1rem;
 }
 
 //Open menu
-
 .open_mobile_menu {
    display: none;
 }
 
 .top_area {
-   padding: 1rem;
+   padding: global.$extra-large-gap;
    display: flex;
    align-items: center;
 
@@ -49,11 +48,11 @@ $page-link-font-size: 1rem;
 }
 
 .pages {
-   margin: 1rem 0 1rem 0;
+   margin: global.$extra-large-gap 0 global.$extra-large-gap 0;
 }
 
 .bottom_area {
-   margin: 1rem 0 0 0;
+   margin: global.$extra-large-gap 0 0 0;
 }
 
 .bar {
@@ -82,7 +81,7 @@ $page-link-font-size: 1rem;
 
       span {
          left: 5rem;
-         padding: 0.5rem;
+         padding: global.$default-gap;
          color: global.$default-white;
          box-shadow: global.$tooltip-box-shadow;
          border-radius: global.$default-border-radius;
@@ -129,7 +128,7 @@ $page-link-font-size: 1rem;
       background-color: global.$background-color;
       animation: openMobileMenu global.$default-transition;
       position: fixed;
-      overflow-y: scroll;
+      overflow-y: auto;
 
       .top_area>svg {
          left: 3.75rem;
@@ -139,7 +138,7 @@ $page-link-font-size: 1rem;
       .bottom_area>ul {
          li>a {
             width: 12.5rem;
-            font-size: 1.25rem;
+            font-size: global.$larger-font-size;
             justify-content: center;
          }
 
@@ -173,13 +172,13 @@ $page-link-font-size: 1rem;
       z-index: 10;
       left: -1rem;
       top: 1.75rem;
-      padding: 0.3rem 0 0.3rem 0.5rem;
       color: global.$border-color;
       height: $minimize-menu-button;
       box-shadow: global.$tooltip-box-shadow;
-      width: calc($minimize-menu-button + 1rem);
+      padding: 0.3rem 0 0.3rem global.$default-gap;
       border-radius: global.$default-border-radius;
       background-color: global.$svg-background-black;
+      width: calc($minimize-menu-button + global.$extra-large-gap);
       display: block;
       cursor: pointer;
       position: absolute;
@@ -200,8 +199,8 @@ $page-link-font-size: 1rem;
 %page-link {
 
    ul {
-      gap: 1rem;
       padding: 0;
+      gap: global.$extra-large-gap;
       display: flex;
       list-style-type: none;
       flex-direction: column;
@@ -218,7 +217,7 @@ $page-link-font-size: 1rem;
       color: global.$border-color;
       font-size: $page-link-font-size;
       border-radius: global.$default-border-radius;
-      width: calc(#{global.$open-side-navigation-width} - 1rem);
+      width: calc(#{global.$open-side-navigation-width} - global.$extra-large-gap);
       margin: auto;
       display: flex;
       cursor: pointer;
@@ -240,9 +239,9 @@ $page-link-font-size: 1rem;
 }
 
 %menu-svg {
-   padding: 0.5rem 0.75rem;
    color: global.$border-color;
    height: $minimize-menu-button;
+   padding: global.$default-gap 0.75rem;
    box-shadow: global.$tooltip-box-shadow;
    border-radius: global.$default-border-radius;
    background-color: global.$svg-background-black;

@@ -1,0 +1,53 @@
+@use "../../../app/globals.scss" as global;
+
+.delete_task {
+   top: 45%;
+   left: 35%;
+   width: 30%;
+   z-index: 15;
+   padding: global.$larger-gap;
+   border: global.$default-border;
+   box-shadow: global.$default-box-shadow;
+   background-color: global.$background-color;
+   border-radius: global.$default-border-radius;
+   display: flex;
+   position: fixed;
+   text-align: center;
+   align-items: center;
+   flex-direction: column;
+
+   .options {
+      display: flex;
+      gap: global.$default-gap;
+
+      button {
+         border: 0;
+         width: 5rem;
+         padding: global.$default-gap;
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         border-radius: global.$default-border-radius;
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      button:hover {
+         opacity: 0.8;
+      }
+
+      .yes {
+         background-color: global.$default-green;
+      }
+
+      .no {
+         background-color: global.$logo-color;
+      }
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .delete_task {
+      width: 85%;
+      left: 4%;
+   }
+}

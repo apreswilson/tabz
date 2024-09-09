@@ -4,35 +4,38 @@
 $account_icon_size: 2rem;
 
 .top_bar {
-   grid-row: 1;
-   display: flex;
+   gap: global.$extra-large-gap;
+   border-bottom: 0.1rem solid global.$border-color;
    align-items: center;
    justify-content: space-between;
-   border-bottom: 0.1rem solid global.$border-color;
-   gap: 1rem;
 
    &>* {
-      transition: global.$default-transition;
-      -webkit-transition: global.$default-transition;
-      -moz-transition: global.$default-transition;
-      -o-transition: global.$default-transition;
+      @extend %transition;
    }
 
    h1 {
-      margin: 1rem 0 1rem 3.75rem;
+      margin: 0;
       font-size: 2.5rem;
       color: global.$default-white;
+      padding: global.$extra-large-gap 2.5rem;
    }
 
    svg {
-      color: global.$border-color;
-      height: $account_icon_size;
       width: $account_icon_size;
+      height: $account_icon_size;
+      color: global.$border-color;
       margin-right: 4rem;
       cursor: pointer;
 
       &:hover {
          color: global.$default-white;
       }
+   }
+}
+
+@media screen and (max-width: 500px) {
+   .top_bar>h1 {
+      padding: 2rem 3rem;
+      font-size: global.$header-font-size;
    }
 }

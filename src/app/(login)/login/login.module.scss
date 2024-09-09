@@ -1,11 +1,11 @@
 @use "../../globals.scss" as global;
 
 .login_page {
+   padding-bottom: global.$extra-large-gap;
+   min-height: calc(100dvh - #{global.$extra-large-gap});
    display: flex;
    align-items: center;
    justify-content: center;
-   min-height: calc(100dvh - #{global.$extra-large-gap});
-   padding-bottom: global.$extra-large-gap;
 }
 
 .login_form {
@@ -13,9 +13,9 @@
    color: global.$default-white;
 
    h1 {
-      font-weight: normal;
       font-size: global.$extra-large-font-size;
       text-align: center;
+      font-weight: normal;
    }
 
    label {
@@ -24,9 +24,9 @@
    }
 
    a {
+      margin: 0;
       color: global.$default-white;
       @extend %transition;
-      margin: 0;
 
       &:hover {
          color: global.$logo-color;
@@ -47,9 +47,9 @@
    &,
    .email,
    .password {
+      gap: global.$extra-large-gap;
       display: flex;
       flex-direction: column;
-      gap: global.$extra-large-gap;
    }
 
    .email>input,
@@ -58,8 +58,8 @@
       color: global.$default-white;
       font-size: global.$default-font-size;
       font-family: global.$default-font-family;
-      outline: none;
       border-radius: global.$default-border-radius;
+      outline: none;
       @extend %transition;
    }
 
@@ -75,9 +75,9 @@
    }
 
    .submit {
-      background-color: global.$logo-color;
-      margin-top: global.$extra-large-gap;
       border: 0;
+      margin-top: global.$extra-large-gap;
+      background-color: global.$logo-color;
       padding: calc(global.$larger-gap + 1px) global.$default-gap;
       cursor: pointer;
 

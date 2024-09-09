@@ -35,12 +35,13 @@ export default function Calendar() {
                      <p>SAT</p>
                      <p>SUN</p>
                   </div>
+                  {/* ONLY USE FIRST DAY AS TEMPLATE BECAUSE IT HAS THE ACTUAL ANCHOR TAG ADDED TO I */}
                   <div className={styles.day}>
                      <p className={styles.day_number}>1</p>
                      <div className={styles.calendar_events}>
                         <p>Scheduled Meeting</p>
                         <p>Zoom Call</p>
-                        <p className={styles.view_more}>View Details</p>
+                        <a href="#details"><p className={styles.view_more}>View Details</p></a>
                      </div>
                   </div>
                   <div className={styles.day}>
@@ -158,7 +159,7 @@ export default function Calendar() {
                </div>
             </section>
             <section className={styles.selected_day_details}>
-               <h1>January 20th</h1>
+               <h1 id="details">January 20th</h1>
                <div className={styles.day_events}>
                   <div className={styles.event}>
                      <h2>Scheduled Meeting</h2>

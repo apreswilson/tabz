@@ -1,19 +1,19 @@
 @use "../../../globals.scss" as global;
 
 .top_section {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
    width: 90%;
-   margin: global.$extra-large-gap auto;
+   grid-template-columns: repeat(3, 1fr);
    gap: global.$extra-large-gap;
    color: global.$default-white;
+   margin: global.$extra-large-gap auto;
+   display: grid;
 
    h1,
    h2 {
-      font-weight: 500;
       margin: 0;
-      padding: global.$larger-gap global.$default-gap;
+      font-weight: 500;
       font-size: global.$header-font-size;
+      padding: global.$larger-gap global.$default-gap;
    }
 
    h1 {
@@ -53,17 +53,17 @@
 
 .bottom_section {
    width: 90%;
+   grid-template-columns: repeat(3, 1fr);
+   color: global.$default-white;
+   gap: global.$extra-large-gap;
    margin: global.$extra-large-gap auto;
    display: grid;
-   color: global.$default-white;
-   grid-template-columns: repeat(3, 1fr);
-   gap: global.$extra-large-gap;
 
    h1,
    h2,
    p {
-      font-weight: 500;
       margin: 0;
+      font-weight: 500;
    }
 
    h1 {
@@ -80,10 +80,10 @@
    .events,
    .guide_recom,
    .settings_recom {
-      background-color: global.$darker-background-color;
+      border: global.$default-border;
       padding: global.$extra-large-gap;
       border-radius: global.$default-border-radius;
-      border: global.$default-border;
+      background-color: global.$darker-background-color;
       cursor: pointer;
       @extend %transition;
 
@@ -106,16 +106,16 @@
       }
 
       .shout>p>span {
-         background-color: global.$background-color;
          padding: 0 0.25rem;
          border: global.$default-border;
+         background-color: global.$background-color;
          border-radius: global.$default-border-radius;
          background-color: global.$input-background-color;
       }
 
       &:hover {
-         box-shadow: global.$default-box-shadow;
          border: global.$active-border;
+         box-shadow: global.$default-box-shadow;
       }
    }
 
@@ -137,8 +137,8 @@
 
 @media screen and (max-width: 550px) {
    .top_section {
-      margin: global.$extra-large-gap auto;
       width: 95%;
+      margin: global.$extra-large-gap auto;
       grid-template-columns: auto;
    }
 

@@ -1,14 +1,14 @@
 @use "../../../globals.scss" as global;
 
 .tasks_section {
-   color: global.$default-white;
    width: 95%;
-   overflow-x: auto;
+   color: global.$default-white;
    margin: global.$default-gap auto;
+   overflow-x: auto;
 
    h1 {
-      font-size: global.$extra-large-font-size;
       font-weight: 500;
+      font-size: global.$header-font-size;
    }
 
    .incomplete_tasks,
@@ -36,9 +36,9 @@
 }
 
 %tasks_table {
-   border-collapse: collapse;
    width: 100%;
    min-width: 100%;
+   border-collapse: collapse;
 
    thead>tr {
       background-color: global.$darker-background-color;
@@ -52,8 +52,8 @@
    th,
    td {
       padding: global.$larger-gap 0;
-      text-align: center;
       border: global.$default-border;
+      text-align: center;
    }
 
    td:nth-child(1) th:nth-child(1) {
@@ -66,17 +66,11 @@
    }
 
    td:nth-child(3),
-   th:nth-child(3) {
-      width: 10%;
-   }
-
+   th:nth-child(3),
+   th:nth-child(4),
    td:nth-child(4),
-   th:nth-child(4) {
-      width: 10%;
-   }
-
-   td:nth-child(5),
-   th:nth-child(5) {
+   th:nth-child(5),
+   td:nth-child(5) {
       width: 10%;
    }
 
@@ -114,9 +108,9 @@
    }
 
    tfoot>tr>td {
-      text-align: left;
       background-color: global.$darker-background-color;
       cursor: pointer;
+      text-align: left;
    }
 
    .add_task>td {
@@ -127,6 +121,14 @@
    .add_task>td:hover {
       color: global.$logo-color;
    }
+
+   .task_completed {
+      cursor: pointer;
+   }
+
+   .task_completed:hover {
+      text-decoration: line-through;
+   }
 }
 
 %new_task_details {
@@ -136,12 +138,12 @@
 
    input,
    select {
-      padding: global.$larger-gap global.$default-gap;
-      background-color: global.$input-background-color;
-      color: global.$default-white;
       border: 0;
       width: 50%;
-      border-radius: global.$default-border-radius;
+      color: global.$default-white;
       margin: 0 global.$default-gap;
+      border-radius: global.$default-border-radius;
+      padding: global.$larger-gap global.$default-gap;
+      background-color: global.$input-background-color;
    }
 }

@@ -2,13 +2,12 @@
 
 .home {
    width: 75%;
-   margin: 1rem auto;
-   color: global.$default-white;
-   display: flex;
-   flex-direction: column;
    gap: global.$default-gap;
+   color: global.$default-white;
+   margin: global.$extra-large-gap auto;
+   display: flex;
    align-items: center;
-
+   flex-direction: column;
 
    h1 {
       font-size: 2.5rem;
@@ -30,11 +29,11 @@
    }
 
    button {
-      padding: global.$default-gap;
-      border-radius: global.$default-border-radius;
       border: 0;
-      font-size: global.$default-font-size;
       color: global.$default-white;
+      padding: global.$default-gap;
+      font-size: global.$default-font-size;
+      border-radius: global.$default-border-radius;
       cursor: pointer;
       @extend %transition;
 
@@ -47,25 +46,25 @@
    .organizations,
    .visit_settings,
    .new_organization {
-      background-color: global.$darker-background-color;
-      padding: global.$larger-gap;
       width: 70%;
-      border-radius: global.$default-border-radius;
-      border: global.$default-border;
-      display: flex;
+      padding: global.$larger-gap;
       gap: global.$extra-large-gap;
+      border: global.$default-border;
+      border-radius: global.$default-border-radius;
+      background-color: global.$darker-background-color;
+      display: flex;
       flex-direction: column;
    }
 
    .invite,
    .organization {
-      display: flex;
       justify-content: space-between;
+      gap: global.$default-gap;
       padding: global.$default-gap 0;
       border-bottom: global.$default-border;
-      gap: global.$default-gap;
-      align-items: center;
+      display: flex;
       cursor: pointer;
+      align-items: center;
       @extend %transition;
    }
 
@@ -77,8 +76,8 @@
    .leave,
    .settings,
    .create_organization {
-      background-color: global.$logo-color;
       width: 6rem;
+      background-color: global.$logo-color;
    }
 
    .accept {
@@ -97,8 +96,8 @@
    .settings>a,
    .create_organization>a {
       text-decoration: none;
-      color: global.$default-white;
       padding: global.$default-gap;
+      color: global.$default-white;
    }
 }
 
@@ -109,10 +108,6 @@
 }
 
 @media screen and (max-width: 800px) {
-
-   .home>h1 {
-      font-size: 3rem;
-   }
 
    .home>h2 {
       font-size: global.$larger-font-size;

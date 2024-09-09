@@ -8,6 +8,7 @@ import PriorityDropdown from "@/components/account-pages/priority-dropdown/prior
 import StatusDropdown from "@/components/account-pages/status-dropdown/status-dropdown";
 import OptionsDropdown from "@/components/account-pages/options-dropdown/options-dropdown";
 import AddTask from "@/components/account-pages/add-task/add-task";
+import DeleteTask from "@/components/account-pages/delete-task/delete-task";
 
 export default function Tasks() {
    const [openPriorityMenu, setOpenPriorityMenu] = useState<boolean>(false);
@@ -93,7 +94,7 @@ export default function Tasks() {
                      </tr>
                   </thead>
                   <tbody>
-                     <tr>
+                     <tr className={styles.task_completed}>
                         <td>Complete centering of div</td>
                         <td>Web Developer</td>
                         <td className={styles.priority__low} onClick={priorityOptionsMenuHandler}>
@@ -116,6 +117,7 @@ export default function Tasks() {
                      </tr>
                   </tbody>
                </table>
+               {/* <DeleteTask /> */}
             </section>
          </section>
       </AccountPageLayout>
