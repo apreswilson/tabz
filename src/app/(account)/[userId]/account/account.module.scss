@@ -32,13 +32,15 @@
    .fname,
    .lname,
    .email,
-   .password {
+   .password,
+   .color_theme {
       width: 65%;
       gap: global.$default-gap;
       display: flex;
       flex-direction: column;
 
-      label {
+      label,
+      p {
          font-size: global.$header-font-size;
       }
 
@@ -52,12 +54,34 @@
          background-color: global.$darker-background-color;
          outline: none;
          @extend %transition;
-
       }
 
       input:focus {
          border: global.$active-border;
       }
+   }
+
+   .color_theme>.theme_options {
+      display: flex;
+
+      button {
+         width: 5rem;
+         padding: global.$default-gap;
+         color: global.$default-white;
+         font-size: global.$default-font-size;
+         cursor: pointer;
+         @extend %transition;
+      }
+   }
+
+   .active {
+      border: global.$default-border;
+      background-color: global.$logo-color;
+   }
+
+   .inactive {
+      border: global.$default-border;
+      background-color: global.$darker-background-color;
    }
 
    .buttons {
@@ -103,7 +127,8 @@
    .lname,
    .email,
    .password,
-   .buttons {
+   .buttons,
+   .color_theme {
       width: 95% !important;
    }
 }
