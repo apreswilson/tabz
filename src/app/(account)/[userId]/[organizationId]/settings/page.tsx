@@ -10,14 +10,6 @@ export default function Settings() {
             <section className={styles.update_settings}>
                <h1>User Settings</h1>
                <p>The button with the red background is the currently enabled option.</p>
-               <div className={styles.theme}>
-                  <h2>Color Theme</h2>
-                  <p>Decide which color theme is used to display content on the website.</p>
-                  <div className={styles.button_options}>
-                     <button className={`${styles.light_theme} ${styles.inactive}`}>Light</button>
-                     <button className={`${styles.dark_theme} ${styles.active}`}>Dark</button>
-                  </div>
-               </div>
                <div className={styles.status_popups}>
                   <h2>Action Popups</h2>
                   <p>Hides or displays the popup that appears when an action is made.</p>

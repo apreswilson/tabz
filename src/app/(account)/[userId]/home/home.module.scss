@@ -68,6 +68,10 @@
       @extend %transition;
    }
 
+   .organization>p:nth-child(1) {
+      width: 10rem;
+   }
+
    .organization:hover {
       border-bottom: global.$active-border;
    }
@@ -98,6 +102,11 @@
       text-decoration: none;
       padding: global.$default-gap;
       color: global.$default-white;
+   }
+
+   .action_buttons {
+      display: flex;
+      gap: global.$default-gap;
    }
 }
 

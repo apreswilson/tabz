@@ -1,14 +1,68 @@
 import mongoose from "mongoose";
 
-export interface UserInterface extends mongoose.Document {
-   _id: string;
+export interface InviteInterface {
+   id: mongoose.Schema.Types.ObjectId;
    name: string;
 }
+interface OrganizationsInterface {
+   id: mongoose.Schema.Types.ObjectId;
+   name: string;
+   joined: Date;
+}
+export interface UserInterface extends mongoose.Document {
+   firstName: string;
+   lastName: string;
+   email: string;
+   password: string;
+   invites: InviteInterface[];
+   organizations: OrganizationsInterface[];
+}
 
-const UserSchema = new mongoose.Schema<UserInterface>({
-   name: {
-      type: String
-   }
+const UserSchema = new mongoose.Schema({
+   firstName: {
+      type: String,
+      required: true
+   },
+   lastName: {
+      type: String,
+      required: true
+   },
+   email: {
+      type: String,
+      required: true
+   },
+   password: {
+      type: String,
+      required: true
+   },
+   invites: [
+      {
+         id: {
+            type: String,
+            required: false
+         },
+         name: {
+            type: String,
+            required: false
+         },
+      },
+   ],
+   organizations: [
+      {
+         id: {
+            type: String,
+            required: false
+         },
+         name: {
+            type: String,
+            required: false
+         },
+         joined: {
+            type: Date,
+            required: false,
+         }
+      }
+   ]
 })
 const User = mongoose.models.User || mongoose.model('User', UserSchema);
 
