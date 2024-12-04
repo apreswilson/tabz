@@ -6,6 +6,10 @@
    color: global.$default-white;
    background-color: global.$darker-background-color;
    display: grid;
+   border-top: global.$default-border;
+   z-index: 5;
+   grid-column: 1 / span 4;
+   left: 25%;
 
    div {
       margin: auto;

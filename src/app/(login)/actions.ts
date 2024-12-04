@@ -105,9 +105,8 @@ export async function loginUser(prevState: { message: string }, formData: FormDa
             organizations: fetchMatchingEmail.organizations
          }
 
-         const session = await encrypt({ userData });
-
          if (comparePasswords) {
+            const session = await encrypt({ userData });
             (await cookies()).set({
                name: "session",
                value: session,

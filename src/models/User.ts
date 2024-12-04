@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { string } from "zod";
 
 export interface InviteInterface {
    id: mongoose.Schema.Types.ObjectId;
@@ -49,10 +50,6 @@ const UserSchema = new mongoose.Schema({
    ],
    organizations: [
       {
-         id: {
-            type: String,
-            required: false
-         },
          name: {
             type: String,
             required: false
@@ -60,6 +57,10 @@ const UserSchema = new mongoose.Schema({
          joined: {
             type: Date,
             required: false,
+         },
+         role: {
+            type: String,
+            required: false
          }
       }
    ]

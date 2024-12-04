@@ -84,6 +84,10 @@ export default function Guide() {
                         section will appear directly beneath the currently edited member. The user will
                         then be able to change/update the users name, email, or role in the company. In
                         order to apply these changes, the user must click the &quot;Update&quot; button.
+                        <b>
+                           &nbsp;If you edit yourself, you will be redirected back to your home page. This is
+                           so that Tabz can update your information in the background.
+                        </b>
                      </p>
                   </div>
                </section>

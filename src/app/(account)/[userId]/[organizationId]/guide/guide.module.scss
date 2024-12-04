@@ -1,4 +1,4 @@
-@use "../../../globals.scss" as global;
+@use "../../../../globals.scss" as global;
 
 .guide_page {
    width: 85%;
@@ -29,6 +29,9 @@
 
    h3 {
       font-size: global.$larger-font-size;
+      padding: 0.1rem 0;
+      border-bottom: global.$default-border;
+      width: max-content;
    }
 
    .dashboard_guide,

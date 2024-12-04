@@ -3,12 +3,10 @@
 .status_options {
    margin-top: global.$default-gap;
    border-top: global.$default-border;
-   border-radius: global.$default-border-radius;
 
    p {
       margin: 0;
       padding: global.$default-gap;
-      background-color: global.$darker-background-color;
       cursor: pointer;
       text-align: center;
       @extend %transition;

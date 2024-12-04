@@ -79,9 +79,14 @@
    .decline,
    .leave,
    .settings,
-   .create_organization {
+   .create_organization,
+   .go {
       width: 6rem;
       background-color: global.$logo-color;
+   }
+
+   .go {
+      background-color: global.$default-green;
    }
 
    .accept {

@@ -1,4 +1,4 @@
-@use "../../../globals.scss" as global;
+@use "../../../../globals.scss" as global;
 $form-section-default-width: 95%;
 $member-list-default-height: 49rem;
 $member-list-900-height: 41rem;
@@ -133,7 +133,7 @@ $member-list-675-height: 38rem;
    }
 
    .member {
-      padding: global.$default-gap 0;
+      padding: global.$extra-large-gap 0;
       border-bottom: 0.01rem solid global.$border-color;
 
       .options {
@@ -256,7 +256,12 @@ $member-list-675-height: 38rem;
    .member_list>.member {
       padding: 2rem 0;
       gap: global.$extra-large-gap;
-      grid-template-columns: auto;
+      display: flex !important;
+      flex-direction: column;
+
+      &>form {
+         width: 75%;
+      }
 
       span {
          display: block;
@@ -309,7 +314,7 @@ $member-list-675-height: 38rem;
 
    span {
       width: 3rem;
-      top: 2.5rem;
+      top: -2.75rem;
       left: -1.25rem;
       padding: global.$default-gap;
       color: global.$default-white;
@@ -320,14 +325,15 @@ $member-list-675-height: 38rem;
       display: none;
       position: absolute;
       pointer-events: none;
+      z-index: 10;
    }
 
    span::after {
-      top: -10%;
+      top: 115%;
       right: 40%;
       margin-top: -0.375rem;
       border-width: 0.375rem;
-      border-color: transparent transparent global.$svg-background-black transparent;
+      border-color: global.$svg-background-black transparent transparent transparent;
       content: "";
       position: absolute;
       border-style: solid;

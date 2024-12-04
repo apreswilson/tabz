@@ -1,4 +1,4 @@
-@use "../../../globals.scss" as global;
+@use "../../../../globals.scss" as global;
 
 .tasks_section {
    width: 95%;
@@ -18,6 +18,35 @@
 
    .incomplete_tasks>tfoot>.add_task_details {
       @extend %new_task_details;
+   }
+
+   .save_changes {
+      display: flex;
+      padding: global.$default-gap 0;
+      gap: global.$default-gap;
+
+      button {
+         font-size: global.$larger-font-size;
+         border-radius: global.$default-border-radius;
+         border: 0;
+         outline: 0;
+         padding: global.$default-gap;
+         color: global.$default-white;
+         cursor: pointer;
+         @extend %transition;
+      }
+
+      button:hover {
+         opacity: 0.8;
+      }
+
+      button:nth-child(1) {
+         background-color: global.$logo-color;
+      }
+
+      button:not(:nth-child(1)) {
+         background-color: global.$default-green;
+      }
    }
 
 }
@@ -122,13 +151,20 @@
       color: global.$logo-color;
    }
 
-   .task_completed {
+   .task_completed>td:nth-child(1)>span {
+      margin-left: global.$larger-gap;
+   }
+
+   .task_completed>td>svg {
+      height: global.$extra-large-gap;
+      width: global.$extra-large-gap;
+   }
+
+   .task_completed>td>svg:hover {
+      color: global.$logo-color;
       cursor: pointer;
    }
 
-   .task_completed:hover {
-      text-decoration: line-through;
-   }
 }
 
 %new_task_details {

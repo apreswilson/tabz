@@ -20,6 +20,7 @@
    }
 
    span {
+      display: inline !important;
       padding: global.$default-gap;
       border: global.$default-border;
       border-radius: global.$default-border-radius;

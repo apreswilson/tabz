@@ -3,6 +3,7 @@ import { NextRequest } from 'next/server'
 import { decrypt } from './lib/encrypt';
 import { cookies } from 'next/headers';
 import { revalidatePath } from 'next/cache';
+import Organization from './models/Organization';
 
 const nonProtectedRoutes = ["/login", "/signup"];
 
@@ -12,6 +13,7 @@ export async function middleware(request: NextRequest) {
    const isPublic = nonProtectedRoutes.includes(path);
    const sessionCookie = request.cookies.get('session')?.value;
    const decryptcookie = sessionCookie ? await decrypt(sessionCookie) : undefined;
+
 
    if (!decryptcookie) {
       ((await cookies()).delete("session"));

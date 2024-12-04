@@ -5,7 +5,8 @@ import { decrypt } from "@/lib/encrypt";
 import { SessionInterface } from "@/lib/definitions";
 import LogoutButton from "./logout";
 import { redirect } from "next/navigation";
-import { LeaveButton } from "./leave";
+import OrganizationList from "./organization";
+import OrganizationInvite from "./invite";
 
 export default async function UserHome({ params }: { params: { userId: string } }) {
    const { userId } = await params;
@@ -23,24 +24,18 @@ export default async function UserHome({ params }: { params: { userId: string } 
          <section className={styles.invites}>
             <h2>Invites</h2>
             {userData?.invites.map((invite) => (
-               <div className={styles.invite} key={invite.name}>
-                  <p>{invite.name}</p>
-                  <div className={styles.options}>
-                     <button className={styles.accept}>Accept</button>
-                     <button className={styles.decline}>Decline</button>
-                  </div>
-               </div>
+               <OrganizationInvite
+                  userId={userId}
+                  inviteName={invite.name}
+                  inviteId={invite._id}
+                  key={invite.name} />
             ))}
          </section>
 
          <section className={styles.organizations}>
             <h2>Organizations</h2>
             {userData?.organizations.map((organization) => (
-               <div className={styles.organization} key={organization.name}>
-                  <p>{organization.name}</p>
-                  <p>Joined: {organization.joined ? new Date(organization.joined).toLocaleDateString("en-US") : "Date not available"}</p>
-                  <LeaveButton userId={userId} organizationName={organization.name} />
-               </div>
+               <OrganizationList userId={userId} organizationName={organization.name} organizationJoined={organization.joined} organizationId={organization._id} key={organization.name} />
             ))}
          </section>
 

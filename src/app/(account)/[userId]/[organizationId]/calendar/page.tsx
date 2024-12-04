@@ -3,7 +3,8 @@ import styles from "./calendar.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarPlus, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-export default function Calendar() {
+export default async function Calendar({ params }: { params: { userId: string, organizationId: string } }) {
+   const { userId, organizationId } = await params;
    return (
       <AccountPageLayout>
          <section className={styles.calendar_wrapper}>
