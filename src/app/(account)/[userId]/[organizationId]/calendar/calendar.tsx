@@ -1,99 +1,74 @@
-'use client';
-import {
-  faCalendarPlus,
-  faChevronLeft,
-  faChevronRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from './calendar.module.scss';
-import Link from 'next/link';
-import {
-  addEventToCalendar,
-  generateCalendarMonth,
-  generateCalendarRange,
-} from '@/utils/calendar';
-import { useState } from 'react';
-import { CalendarDate, CalendarEvent } from '@/types/calendar';
+"use client";
+import { faCalendarPlus, faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import styles from "./calendar.module.scss";
+import Link from "next/link";
+import { addEventToCalendar, generateCalendarRange } from "@/utils/calendar";
+import { useMemo, useState } from "react";
+import { CalendarDate, CalendarEvent, CalendarMonth } from "@/types/calendar";
 
 type CalendarSectionProps = {
   userId: string;
   organizationId: string;
+  organizationEvents: CalendarEvent[];
 };
 
 export default function CalendarSection({
   userId,
   organizationId,
+  organizationEvents,
 }: Readonly<CalendarSectionProps>) {
-  const todayDate = new Date();
+  const todayDate = useMemo(() => new Date(), []);
 
-  const calendar = generateCalendarRange(todayDate);
+  console.log(organizationEvents);
 
-  //Months
+  // Generate calendar + merge in organization events (only recompute when deps change)
+  const calendar: CalendarMonth[] = useMemo(() => {
+    const baseCalendar = generateCalendarRange(todayDate);
+
+    // addEventToCalendar now returns new calendar immutably; update calendar on each event
+    return organizationEvents.reduce((cal, event) => addEventToCalendar(cal, event), baseCalendar);
+  }, [organizationEvents, todayDate]);
+
+  console.log(calendar);
+
+  // Find initial month index (month is 1-based now)
   const initialIndex = calendar.findIndex(
-    (m) =>
-      m.year === todayDate.getFullYear() && m.month === todayDate.getMonth(),
+    (m) => m.year === todayDate.getFullYear() && m.month === todayDate.getMonth() + 1
   );
-
   const [currentMonthIndex, setCurrentMonthIndex] = useState(initialIndex);
   const currentMonthSelected = calendar[currentMonthIndex];
 
-  // Navigation within bounds
+  // Navigation
   const viewOneMonthAhead = () => {
     if (currentMonthIndex < calendar.length - 1) {
-      setCurrentMonthIndex(currentMonthIndex + 1);
+      setCurrentMonthIndex((prev) => prev + 1);
+      setCurrentDaySelected(undefined);
     }
   };
 
-  //Days
-  const todayDayObject = currentMonthSelected.days.find(
-    (d) =>
-      d.year === todayDate.getFullYear() &&
-      d.month === todayDate.getMonth() &&
-      d.day === todayDate.getDate(),
-  );
+  const viewOneMonthBehind = () => {
+    if (currentMonthIndex > 0) {
+      setCurrentMonthIndex((prev) => prev - 1);
+      setCurrentDaySelected(undefined);
+    }
+  };
 
-  const [currentDaySelected, setCurrentDaySelected] = useState<
-    CalendarDate | undefined
-  >(todayDayObject);
+  // Days
+  const todayDayObject = currentMonthSelected.days.find(
+    (d) => d.year === todayDate.getFullYear() && d.month === todayDate.getMonth() + 1 && d.day === todayDate.getDate()
+  );
+  const [currentDaySelected, setCurrentDaySelected] = useState<CalendarDate | undefined>(todayDayObject);
 
   const selectDay = (day: CalendarDate) => {
     setCurrentDaySelected(day);
   };
 
-  const viewOneMonthBehind = () => {
-    if (currentMonthIndex > 0) {
-      setCurrentMonthIndex(currentMonthIndex - 1);
-    }
-  };
-
-  const firstDayOfWeek = new Date(
-    calendar[currentMonthIndex].year,
-    calendar[currentMonthIndex].month,
-    1,
-  ).getDay();
+  // Offset for rendering start of month
+  // Convert month back to 0-based for Date constructor
+  const firstDayOfWeek = new Date(calendar[currentMonthIndex].year, calendar[currentMonthIndex].month - 1, 1).getDay();
 
   const offset = (firstDayOfWeek + 6) % 7;
-
-  const randomEvent: CalendarEvent = {
-    eventName: 'Team Strategy Meeting',
-    eventDate: '2025-05-18',
-    eventTime: '14:00',
-    relevantRoles: ['Manager', 'Developer', 'Designer'],
-    content:
-      'Quarterly planning session to align on goals, deliverables, and roadmaps.',
-  };
-
-  const anotherEvent: CalendarEvent = {
-    eventName: 'Product Demo',
-    eventDate: '2025-05-18',
-    eventTime: '10:30',
-    relevantRoles: ['Sales', 'Marketing', 'Client'],
-    content:
-      'Live demonstration of the new features to key stakeholders and potential clients.',
-  };
-
-  addEventToCalendar(calendar, randomEvent);
-  addEventToCalendar(calendar, anotherEvent);
 
   return (
     <section className={styles.calendar_wrapper}>
@@ -104,10 +79,7 @@ export default function CalendarSection({
             <span>{currentMonthSelected.year}</span>
           </h1>
           <div className={styles.month_slider}>
-            <button
-              className={styles.previous_month}
-              onClick={viewOneMonthBehind}
-            >
+            <button className={styles.previous_month} onClick={viewOneMonthBehind}>
               <FontAwesomeIcon icon={faChevronLeft} />
             </button>
             <button className={styles.next_month} onClick={viewOneMonthAhead}>
@@ -134,7 +106,7 @@ export default function CalendarSection({
 
           {/* Generate empty days to align days to corresponding day of week */}
           {Array.from({ length: offset }).map((_, i) => (
-            <div key={'offset-' + i} className={styles.day} />
+            <div key={"offset-" + i} className={styles.day} />
           ))}
 
           {calendar[currentMonthIndex].days.map((day) => {
@@ -142,7 +114,7 @@ export default function CalendarSection({
 
             return (
               <div
-                className={`${styles.day} ${isSelectedDay ? styles.today : ''}`}
+                className={`${styles.day} ${isSelectedDay ? styles.today : ""}`}
                 key={`${day.year}-${day.month}-${day.day}`}
               >
                 <p className={styles.day_number}>{day.day}</p>
@@ -150,10 +122,7 @@ export default function CalendarSection({
                   {day.events.slice(0, 2).map((event, index) => (
                     <p key={index}>{event.eventName}</p>
                   ))}
-                  <button
-                    className={styles.view_more}
-                    onClick={() => selectDay(day)}
-                  >
+                  <button className={styles.view_more} onClick={() => selectDay(day)}>
                     View Details
                   </button>
                 </div>
@@ -167,9 +136,7 @@ export default function CalendarSection({
           {currentMonthSelected.label} {currentDaySelected?.day}
         </h1>
         <div className={styles.day_events}>
-          {currentDaySelected?.events.length === 0 && (
-            <p>No events on this day</p>
-          )}
+          {currentDaySelected?.events.length === 0 && <p>No events on this day</p>}
           {currentDaySelected?.events.map((event, index) => (
             <div className={styles.event} key={index}>
               <h2>{event.eventName}</h2>
