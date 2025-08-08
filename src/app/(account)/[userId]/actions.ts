@@ -15,6 +15,7 @@ import { TasksInterface } from "./[organizationId]/tasks/page";
 import { revalidatePath } from "next/cache";
 import { FormDataInput } from "@/components/account-pages/edit-member/edit-member";
 import { CalendarEvent } from "@/types/calendar";
+import { OrgWithTasks, Task } from "@/types/task";
 
 export async function logout() {
   (await cookies()).set("session", "", { expires: new Date(0) });
@@ -257,14 +258,14 @@ export async function declineInvite(userId: string, inviteName: string) {
   await updateSession(userId);
 }
 
-export async function createNewShout(organizationId: string, content: string, title: string, relevantRoles: object) {
+export async function createNewShout(organizationId: string, content: string, title: string, relevantRoles: string[]) {
   await dbConnect();
   const cookieStore = (await cookies()).get("session");
-  const decryptValue = cookieStore ? await decrypt(cookieStore?.value) : null;
+  const decryptValue = cookieStore ? await decrypt(cookieStore.value) : null;
 
   const getUserRole = (await cookies()).get("org-session");
-  const decryptOrgRole = getUserRole ? await decrypt(getUserRole?.value) : null;
-  const roleOfUser = decryptOrgRole.organizationData.userRole;
+  const decryptOrgRole = getUserRole ? await decrypt(getUserRole.value) : null;
+  const roleOfUser = decryptOrgRole?.organizationData.userRole;
   if (!decryptValue || !decryptOrgRole) return;
   const userData: SessionInterface = decryptValue.userData;
 
@@ -278,7 +279,7 @@ export async function createNewShout(organizationId: string, content: string, ti
               author: `${userData.firstName} ${userData.lastName}`,
               authorRole: roleOfUser as string,
               timePosted: new Date().toString(),
-              relevantRoles: relevantRoles,
+              relevantRoles: relevantRoles, // now an array of strings
               title: title,
               content: content,
             },
@@ -372,6 +373,7 @@ export async function updateTasksList(
 }
 
 export async function editOrganizationMember(formData: FormDataInput) {
+  await dbConnect();
   await Organization.findOneAndUpdate(
     {
       _id: formData.organizationId,
@@ -446,13 +448,13 @@ export async function updateSession(inputValue: string) {
   }
 }
 
-//Create event
-
+//Calendar
 interface OrganizationDoc extends Document {
   events: CalendarEvent[];
 }
 
 export async function getOrganizationEvents(organizationId: string): Promise<CalendarEvent[]> {
+  await dbConnect();
   const org = await Organization.findById(organizationId).select("events").lean<OrganizationDoc>();
 
   if (!org) throw new Error("Organization not found");
@@ -462,4 +464,48 @@ export async function getOrganizationEvents(organizationId: string): Promise<Cal
 
 export async function addEventToOrganization(orgId: string, newEvent: CalendarEvent) {
   await Organization.findByIdAndUpdate(orgId, { $push: { events: newEvent } }, { new: true });
+}
+
+//Dashboard
+
+// Get upcoming events within 30 days
+export const getUpcomingEvents = async (orgId: string) => {
+  await dbConnect();
+
+  const today = new Date();
+  const monthFromNow = new Date();
+  monthFromNow.setDate(today.getDate() + 30);
+
+  const org = await Organization.findById(orgId, { events: 1 });
+
+  if (!org) return [];
+
+  return org.events.filter((event: CalendarEvent) => {
+    const [mm, dd, yyyy] = event.eventDate.split("/").map(Number);
+    const eventDate = new Date(yyyy, mm - 1, dd);
+    return eventDate >= today && eventDate <= monthFromNow;
+  });
+};
+
+export const getRecentShouts = async (orgId: string, limit = 3) => {
+  await dbConnect();
+
+  const org = await Organization.findById(orgId, { shouts: 1 });
+  if (!org) return [];
+
+  return [...org.shouts]
+    .sort((a, b) => new Date(b.timePosted).getTime() - new Date(a.timePosted).getTime())
+    .slice(0, limit);
+};
+
+export async function getCompletedTasks(organizationId: string) {
+  const org = (await Organization.findById(organizationId, { tasks: 1 }).lean()) as OrgWithTasks;
+  if (!org) return [];
+  return org.tasks.filter((task: Task) => task.status === "Complete");
+}
+
+export async function getInProgressTasks(organizationId: string) {
+  const org = (await Organization.findById(organizationId, { tasks: 1 }).lean()) as OrgWithTasks;
+  if (!org) return [];
+  return org.tasks.filter((task: Task) => task.status === "In Progress" || task.status === "Not Started");
 }

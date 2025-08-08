@@ -1,153 +1,156 @@
 @use "../../../../globals.scss" as global;
 
 .top_section {
-   width: 90%;
-   grid-template-columns: repeat(3, 1fr);
-   gap: global.$extra-large-gap;
-   color: global.$default-white;
-   margin: global.$extra-large-gap auto;
-   display: grid;
+  width: 90%;
+  grid-template-columns: repeat(3, 1fr);
+  gap: global.$extra-large-gap;
+  color: global.$default-white;
+  margin: global.$extra-large-gap auto;
+  display: grid;
 
-   h1,
-   h2 {
-      margin: 0;
-      font-weight: 500;
-      font-size: global.$header-font-size;
-      padding: global.$larger-gap global.$default-gap;
-   }
+  h1,
+  h2 {
+    margin: 0;
+    font-weight: 500;
+    font-size: global.$header-font-size;
+    padding: global.$larger-gap global.$default-gap;
+  }
 
-   h1 {
-      border-radius: global.$default-border-radius global.$default-border-radius 0 0;
-   }
+  h1 {
+    border-radius: global.$default-border-radius global.$default-border-radius 0 0;
+  }
 
-   h2 {
-      background-color: global.$darker-background-color;
-      border-radius: 0 0 global.$default-border-radius global.$default-border-radius;
-   }
+  h2 {
+    background-color: global.$darker-background-color;
+    border-radius: 0 0 global.$default-border-radius global.$default-border-radius;
+  }
 
-   .member_count,
-   .tasks_completed,
-   .upcoming_event_quantity,
-   .tasks_incomplete {
-      // box-shadow: global.$default-box-shadow;
-      border: global.$default-border;
-      border-radius: global.$default-border-radius;
-   }
+  .member_count,
+  .tasks_completed,
+  .upcoming_event_quantity,
+  .tasks_incomplete {
+    // box-shadow: global.$default-box-shadow;
+    border: global.$default-border;
+    border-radius: global.$default-border-radius;
+  }
 
-   .tasks_completed>h1 {
-      background-color: global.$default-green;
-   }
+  .tasks_completed > h1 {
+    background-color: global.$default-green;
+  }
 
-   .member_count>h1 {
-      background-color: global.$default-blue;
-   }
+  .member_count > h1 {
+    background-color: global.$default-blue;
+  }
 
-   .upcoming_event_quantity>h1 {
-      background-color: global.$default-orange;
-   }
+  .upcoming_event_quantity > h1 {
+    background-color: global.$default-orange;
+  }
 
-   .tasks_incomplete>h1 {
-      background-color: global.$logo-color;
-   }
+  .tasks_incomplete > h1 {
+    background-color: global.$logo-color;
+  }
 }
 
 .bottom_section {
-   width: 90%;
-   grid-template-columns: repeat(3, 1fr);
-   color: global.$default-white;
-   gap: global.$extra-large-gap;
-   margin: global.$extra-large-gap auto;
-   display: grid;
+  width: 90%;
+  grid-template-columns: repeat(3, 1fr);
+  color: global.$default-white;
+  gap: global.$extra-large-gap;
+  margin: global.$extra-large-gap auto;
+  display: grid;
 
-   h1,
-   h2,
-   p {
-      margin: 0;
-      font-weight: 500;
-   }
+  h1,
+  h2,
+  p {
+    margin: 0;
+    font-weight: 500;
+  }
 
-   h1 {
-      font-size: global.$header-font-size;
-      border-bottom: global.$default-border;
-   }
+  h1 {
+    font-size: global.$header-font-size;
+    border-bottom: global.$default-border;
+  }
 
-   h2 {
-      font-size: global.$larger-font-size;
-   }
+  h2 {
+    font-size: global.$larger-font-size;
+  }
 
-   .shouts,
-   .tasks,
-   .events,
-   .guide_recom,
-   .settings_recom {
+  .shouts,
+  .tasks,
+  .events,
+  .guide_recom,
+  .settings_recom {
+    border: global.$default-border;
+    padding: global.$extra-large-gap;
+    border-radius: global.$default-border-radius;
+    background-color: global.$darker-background-color;
+    cursor: pointer;
+    @extend %transition;
+
+    &,
+    .shouts_list,
+    .tasks_list,
+    .events_list,
+    .shout,
+    .task,
+    .event {
+      display: flex;
+      flex-direction: column;
+      gap: global.$default-gap;
+    }
+
+    .shout > h2,
+    .task > h2,
+    .event > h2 {
+      color: global.$logo-color;
+    }
+
+    .shout > p > span {
+      padding: 0 0.25rem;
       border: global.$default-border;
-      padding: global.$extra-large-gap;
+      background-color: global.$background-color;
       border-radius: global.$default-border-radius;
-      background-color: global.$darker-background-color;
-      cursor: pointer;
-      @extend %transition;
+      background-color: global.$input-background-color;
+    }
 
-      &,
-      .shouts_list,
-      .tasks_list,
-      .events_list,
-      .shout,
-      .task,
-      .event {
-         display: flex;
-         flex-direction: column;
-         gap: global.$default-gap;
-      }
-
-      .shout>h2,
-      .task>h2,
-      .event>h2 {
-         color: global.$logo-color;
-      }
-
-      .shout>p>span {
-         padding: 0 0.25rem;
-         border: global.$default-border;
-         background-color: global.$background-color;
-         border-radius: global.$default-border-radius;
-         background-color: global.$input-background-color;
-      }
-
-      &:hover {
-         border: global.$active-border;
-         box-shadow: global.$default-box-shadow;
-      }
-   }
-
+    &:hover {
+      border: global.$active-border;
+      box-shadow: global.$default-box-shadow;
+    }
+  }
 }
 
 @media screen and (max-width: 950px) {
-   .top_section {
-      grid-template-columns: repeat(2, auto);
-   }
+  .top_section {
+    grid-template-columns: repeat(2, auto);
+  }
 
-   .bottom_section {
-      grid-template-columns: repeat(2, 1fr);
+  .bottom_section {
+    grid-template-columns: repeat(2, 1fr);
 
-      .shouts {
-         grid-column: span 2;
-      }
-   }
+    .shouts {
+      grid-column: span 2;
+    }
+
+    .event {
+      flex-direction: column;
+    }
+  }
 }
 
 @media screen and (max-width: 550px) {
-   .top_section {
-      width: 95%;
-      margin: global.$extra-large-gap auto;
-      grid-template-columns: auto;
-   }
+  .top_section {
+    width: 95%;
+    margin: global.$extra-large-gap auto;
+    grid-template-columns: auto;
+  }
 
-   .bottom_section {
-      width: 95%;
-      grid-template-columns: auto;
+  .bottom_section {
+    width: 95%;
+    grid-template-columns: auto;
 
-      .shouts {
-         grid-column: 1;
-      }
-   }
+    .shouts {
+      grid-column: 1;
+    }
+  }
 }
