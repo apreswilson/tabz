@@ -2,6 +2,7 @@ import AccountPageLayout from "@/components/account-pages/account-page-layout";
 import styles from "./shouts.module.scss";
 import Organization from "@/models/Organization";
 import ShoutsSection from "./filterview";
+import dbConnect from "@/lib/dbconnect";
 export interface ShoutsInterface {
   _id: string;
   author: string;
@@ -17,6 +18,8 @@ export default async function Shouts({ params }: { params: any }) {
     userId: string;
     organizationId: string;
   };
+
+  await dbConnect();
 
   const fetchOrganizationFromDB = await Organization.findOne({ _id: organizationId });
   const shoutsList: ShoutsInterface[] = fetchOrganizationFromDB.shouts.map(

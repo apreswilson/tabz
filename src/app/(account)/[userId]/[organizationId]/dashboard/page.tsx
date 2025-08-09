@@ -4,12 +4,15 @@ import { getCompletedTasks, getInProgressTasks, getRecentShouts, getUpcomingEven
 import { CalendarEvent } from "@/types/calendar";
 import { Shout } from "@/types/shout";
 import { Task } from "@/types/task";
+import dbConnect from "@/lib/dbconnect";
 
 export default async function DashboardPage({ params }: { params: any }) {
   const { organizationId } = params as {
     userId: string;
     organizationId: string;
   };
+
+  await dbConnect();
 
   const [upcomingEvents, recentShouts, completedTasks, incompleteTasks] = await Promise.all([
     getUpcomingEvents(organizationId),
