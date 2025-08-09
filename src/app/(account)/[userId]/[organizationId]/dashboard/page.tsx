@@ -5,8 +5,11 @@ import { CalendarEvent } from "@/types/calendar";
 import { Shout } from "@/types/shout";
 import { Task } from "@/types/task";
 
-export default async function DashboardPage({ params }: { params: { userId: string; organizationId: string } }) {
-  const { userId, organizationId } = await params;
+export default async function DashboardPage({ params }: { params: any }) {
+  const { organizationId } = params as {
+    userId: string;
+    organizationId: string;
+  };
 
   const [upcomingEvents, recentShouts, completedTasks, incompleteTasks] = await Promise.all([
     getUpcomingEvents(organizationId),

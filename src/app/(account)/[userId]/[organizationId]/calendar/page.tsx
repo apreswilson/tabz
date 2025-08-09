@@ -1,9 +1,12 @@
 import AccountPageLayout from "@/components/account-pages/account-page-layout";
 import CalendarSection from "./calendar";
 import { getOrganizationEvents } from "../../actions";
-import { CalendarEvent } from "@/types/calendar";
-export default async function Calendar({ params }: { params: { userId: string; organizationId: string } }) {
-  const { userId, organizationId } = await params;
+
+export default async function Calendar({ params }: { params: any }) {
+  const { userId, organizationId } = params as {
+    userId: string;
+    organizationId: string;
+  };
 
   let organizationEvents = await getOrganizationEvents(organizationId);
 
